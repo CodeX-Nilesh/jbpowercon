@@ -1,15 +1,17 @@
 # TODO — replace before launch
 
 ## Source material
-- [x] Brochure PDF supplied (`JBPPL Profile.pdf`, 2026-10-30) — company details, mission/vision, director bios, org chart, full machinery list, full test-equipment list, product descriptions and ISO/Udyam/GST certificates have been transcribed into `/src/data/*.json`. The PDF itself was read from Downloads, not committed into `/src/source` (ask the user whether to add it).
-- [x] Factory, machinery and ISO-certificate photos extracted from the brochure and in use (`src/images/factory/hero.jpg`, `floor.jpg`, `certificates.jpg`).
-- [x] Product hero photos extracted from the brochure's "Product Details" pages and in use (`src/images/products/*.jpg`). These are brochure stock-style product shots, not JBPPL's own studio photography — fine for now, but ask the client if they'd prefer dedicated product photography later.
+- [x] Brochure PDF supplied (`JBPPL Profile.pdf`, 2026-10-30) and copied into `/src/source` — company details, mission/vision, director bios, org chart, full machinery list, full test-equipment list, product descriptions and ISO/Udyam/GST certificates have been transcribed into `/src/data/*.json`.
+- [x] Factory, machinery and ISO-certificate photos extracted from the brochure, converted to WebP and in use (`src/images/factory/hero.webp`, `floor.webp`, `certificates.webp`).
+- [x] Product hero photos extracted from the brochure's "Product Details" pages, converted to WebP and in use (`src/images/products/*.webp`). These are brochure stock-style product shots, not JBPPL's own studio photography — fine for now, but ask the client if they'd prefer dedicated product photography later.
 - Team headshots (Adesh Jain, Sumeet Kr Bansal) — brochure has no individual portrait photos, only group/factory-floor shots. Still neutral SVG placeholders (`src/images/team/*.svg`).
 - Portfolio and testimonial images — brochure has no case-study or client photos. Still placeholder SVGs.
 
 ## Fonts
-- [ ] `/src/fonts` is empty. Add self-hosted woff2 files: `sreda-400.woff2`, `sreda-700.woff2` (if licence can be confirmed — unverified), `arvo-400.woff2`, `arvo-700.woff2` (fallback), `inter-variable.woff2`. Build does not fail without them; browser falls back to Georgia/system-ui, but real files are needed for the intended look.
-- [ ] Once real font files are in place, re-measure and tune `size-adjust` / `ascent-override` / `descent-override` in `src/css/fonts.css` against the real glyph metrics.
+- [x] Sreda supplied (2026-10-31) as `Sreda.otf`, converted to `src/fonts/sreda-400.woff2` (Regular, the only weight supplied — 35KB). Licence still unverified; TODO: confirm with client before shipping to production. Fallback metrics (`Sreda Fallback` @font-face in `src/css/fonts.css`) were tuned from Sreda's real OS/2 metrics (ascent 75%, descent 25%, cap-height 70%) to minimise layout shift on swap.
+- [ ] No bold Sreda file — font-weight:700 requests on "Sreda" fall back to the browser's synthetic/faux bold. Get a real Sreda Bold file if the design calls for true bold display type.
+- [ ] `inter-variable.woff2` still missing — body/UI text currently falls back to system-ui (Segoe UI on Windows). Add the real Inter variable file for the intended body-type pairing with Sreda.
+- [ ] `arvo-*.woff2` no longer needed in the stack (replaced by a metric-matched local-system fallback, "Sreda Fallback") — can be dropped from future TODOs unless Arvo is wanted as an actual rendered typeface somewhere.
 
 ## Data (`/src/data/*.json`) — now sourced from the brochure
 - `company.json` — about/mission/vision and ISO certificate numbers (E20251034256, E20251034257) are now real. Still TODO: founded year / incorporation date (not in the brochure's About/Company-Details text), a dedicated history/timeline (brochure has none).

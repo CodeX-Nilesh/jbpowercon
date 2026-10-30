@@ -27,7 +27,7 @@
   --text-on-ink-muted: color-mix(in srgb, white 70%, var(--ink));
 
   /* Type */
-  --font-display: "Sreda", "Arvo", Georgia, serif;
+  --font-display: "Sreda", "Sreda Fallback", "Arvo", Georgia, serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --fs-display: clamp(3rem, 2.1rem + 3.6vw, 6rem);
@@ -56,6 +56,8 @@
 
   --radius: 4px;
   --radius-lg: 10px;
+  --radius-btn: 999px;
+  --shadow-hover: 0 12px 24px -14px rgba(36, 40, 43, 0.4);
   --container-max: 1280px;
   --gutter: var(--space-3);
 
