@@ -1,0 +1,56 @@
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div>
+      <p class="wordmark" style="opacity:1;transform:none;animation:none">JB <span>POWERCON</span></p>
+      <p style="margin-top:var(--space-2);color:var(--text-on-ink-muted);max-width:32ch">
+        LT power cables, LT AB cables and ACSR conductors, manufactured at Chamrail, Howrah under ISO 9001:2015 and ISO 14001:2015.
+      </p>
+      <div class="badge-row" style="margin-top:var(--space-3)">
+        <span class="badge" style="border-color:var(--border-on-ink);color:var(--text-on-ink-muted)"><strong style="color:var(--text-on-ink)">ISO 9001:2015</strong></span>
+        <span class="badge" style="border-color:var(--border-on-ink);color:var(--text-on-ink-muted)"><strong style="color:var(--text-on-ink)">ISO 14001:2015</strong></span>
+      </div>
+    </div>
+
+    <div>
+      <p class="site-footer__heading">Navigate</p>
+      <ul class="site-footer__list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/products/">Products</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/services/">Services</a></li>
+        <li><a href="/team/">Team</a></li>
+        <li><a href="/portfolio/">Portfolio</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="site-footer__heading">Contact</p>
+      <ul class="site-footer__list">
+        <li>{{site.ADDRESS.line1}}, {{site.ADDRESS.line2}}</li>
+        <li>{{site.ADDRESS.city}}, {{site.ADDRESS.state}} {{site.ADDRESS.pincode}}</li>
+        <li><a href="tel:+91{{site.CONTACTS.0.phone}}">{{site.CONTACTS.0.name}} — {{site.CONTACTS.0.phone}}</a></li>
+        <li><a href="tel:+91{{site.CONTACTS.1.phone}}">{{site.CONTACTS.1.name}} — {{site.CONTACTS.1.phone}}</a></li>
+        <li><a href="mailto:{{site.EMAIL}}">{{site.EMAIL}}</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container site-footer__bottom">
+    <p>&copy; {{now.year}} {{site.LEGAL_NAME}}. All rights reserved. GSTIN {{site.GSTIN}}.</p>
+    <button type="button" class="site-footer__legal-btn" data-privacy-open>Privacy Policy</button>
+  </div>
+</footer>
+
+<dialog id="privacy-dialog" class="dialog-surface" aria-label="Privacy Policy">
+  <div class="dialog-surface__head">
+    <h2 style="font-size:1.5rem">Privacy Policy</h2>
+    <button type="button" class="dialog-surface__close" data-privacy-close>
+      <span class="visually-hidden">Close</span>
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div data-privacy-body>
+    <p>Loading…</p>
+  </div>
+</dialog>

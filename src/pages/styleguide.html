@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Styleguide — JB Powercon</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+<link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container site-header__bar">
+    <span class="wordmark">JB <span>POWERCON</span></span>
+    <span class="label">Styleguide — internal reference, noindex</span>
+  </div>
+</header>
+
+<main id="main" class="container" style="padding-block:var(--space-8)">
+  <h1>Styleguide</h1>
+  <p style="color:var(--text-muted);margin-top:var(--space-2)">Source of truth for color, type and components. Not linked in navigation.</p>
+
+  <section class="section--tight">
+    <h2><span class="section-number">01</span>Color</h2>
+    <div class="grid-12" style="margin-top:var(--space-3)">
+      <div style="grid-column:span 3">
+        <div style="height:80px;background:var(--ink);border-radius:var(--radius)"></div>
+        <p class="label" style="margin-top:var(--space-1)">--ink #24282B</p>
+      </div>
+      <div style="grid-column:span 3">
+        <div style="height:80px;background:var(--stone);border-radius:var(--radius)"></div>
+        <p class="label" style="margin-top:var(--space-1)">--stone #DBD7D4</p>
+      </div>
+      <div style="grid-column:span 3">
+        <div style="height:80px;background:var(--accent);border-radius:var(--radius)"></div>
+        <p class="label" style="margin-top:var(--space-1)">--accent #FD5E00</p>
+      </div>
+      <div style="grid-column:span 3">
+        <div style="height:80px;background:var(--accent-tint);border-radius:var(--radius);border:1px solid var(--border-hairline)"></div>
+        <p class="label" style="margin-top:var(--space-1)">--accent-tint</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section class="section--tight">
+    <h2><span class="section-number">02</span>Type</h2>
+    <p class="label">Display / Sreda or Arvo</p>
+    <h1 style="margin-bottom:var(--space-2)">Aa Display 3–6rem</h1>
+    <h2 style="margin-bottom:var(--space-2)">Aa Heading 2</h2>
+    <h3 style="margin-bottom:var(--space-2)">Aa Heading 3</h3>
+    <p class="label">Body / Inter</p>
+    <p style="margin-top:var(--space-1)">Body copy sits on Inter at 1–1.125rem with 1.6 line-height and a max measure of 68 characters so paragraphs stay easy to scan on wide screens.</p>
+  </section>
+
+  <hr class="rule" />
+
+  <section class="section--tight">
+    <h2><span class="section-number">03</span>Buttons</h2>
+    <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;margin-top:var(--space-3)">
+      <button class="btn btn--primary">Primary</button>
+      <button class="btn btn--ink">Ink</button>
+      <button class="btn btn--outline">Outline</button>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section class="section--tight">
+    <h2><span class="section-number">04</span>Badges &amp; stat tiles</h2>
+    <div class="badge-row" style="margin-top:var(--space-3)">
+      <span class="badge"><strong>ISO 9001:2015</strong></span>
+      <span class="badge"><strong>ISO 14001:2015</strong></span>
+    </div>
+    <div class="stat-row" style="margin-top:var(--space-4)">
+      <div class="stat-tile"><p class="stat-tile__number">03</p><p class="stat-tile__label">Product lines</p></div>
+      <div class="stat-tile"><p class="stat-tile__number">02</p><p class="stat-tile__label">ISO certifications</p></div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section class="section--tight">
+    <h2><span class="section-number">05</span>Cards</h2>
+    <div class="grid-12" style="margin-top:var(--space-3)">
+      <div style="grid-column:span 4" class="product-card">
+        <div class="product-card__media"><img src="/images/products/acsr-conductor-hero.svg" alt="" width="800" height="600" loading="lazy" /></div>
+        <div class="product-card__body">
+          <p class="product-card__eyebrow">Conductors</p>
+          <h3 class="product-card__title">ACSR Conductor</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section class="section--tight">
+    <h2><span class="section-number">06</span>Forms</h2>
+    <form style="margin-top:var(--space-3);max-width:480px">
+      <div class="field">
+        <label for="sg-name">Name</label>
+        <input id="sg-name" type="text" />
+      </div>
+      <div class="field has-error">
+        <label for="sg-phone">Phone</label>
+        <input id="sg-phone" type="tel" />
+        <p class="field__error">Please enter a valid phone number.</p>
+      </div>
+    </form>
+  </section>
+
+  <hr class="rule" />
+
+  <section class="section--tight">
+    <h2><span class="section-number">07</span>Org chart node</h2>
+    <ul class="org-chart" style="margin-top:var(--space-3)">
+      <li><span class="org-node">Directors<small>Example</small></span>
+        <ul>
+          <li><span class="org-node">Manager</span></li>
+          <li><span class="org-node">Manager</span></li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<script src="/js/main.js" defer></script>
+</body>
+</html>

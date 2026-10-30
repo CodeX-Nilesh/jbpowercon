@@ -1,0 +1,10 @@
+<li>
+  <span class="org-node">{{title}}<small>{{name}}</small></span>
+  {{#if children}}
+  <ul>
+    {{#each children}}
+    {{> partials/org-node.html}}
+    {{/each}}
+  </ul>
+  {{/if}}
+</li>

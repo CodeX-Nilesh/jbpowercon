@@ -1,0 +1,24 @@
+{
+  "placeholder": true,
+  "_todo": "Entirely fake placeholder quotes — replace with real customer testimonials before launch. Never emit Review/AggregateRating JSON-LD from this file.",
+  "items": [
+    {
+      "quote": "Placeholder quote — TODO: replace with a real customer testimonial.",
+      "name": "Placeholder Name",
+      "role": "Placeholder Designation, Placeholder Company",
+      "placeholder": true
+    },
+    {
+      "quote": "Placeholder quote — TODO: replace with a real customer testimonial.",
+      "name": "Placeholder Name",
+      "role": "Placeholder Designation, Placeholder Company",
+      "placeholder": true
+    },
+    {
+      "quote": "Placeholder quote — TODO: replace with a real customer testimonial.",
+      "name": "Placeholder Name",
+      "role": "Placeholder Designation, Placeholder Company",
+      "placeholder": true
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "placeholder": true,
+  "_todo": "Entirely fake placeholder data — replace every entry with real project/client information before launch. Do not keep any of these names live. Brochure has no project/case-study section, so none of this is transcribed.",
+  "items": [
+    {
+      "id": "proj-01",
+      "title": "Rural Electrification Feeder Upgrade",
+      "client": "Placeholder Client A",
+      "location": "Howrah, West Bengal",
+      "product": "lt-ab-cable",
+      "year": "2024",
+      "summary": "Placeholder case study: supply of LT AB cable for an overhead distribution upgrade replacing bare conductor on a rural feeder.",
+      "image": "/images/portfolio/placeholder-1.svg",
+      "placeholder": true
+    },
+    {
+      "id": "proj-02",
+      "title": "Industrial Park Power Distribution",
+      "client": "Placeholder Client B",
+      "location": "Chamrail, Howrah",
+      "product": "lt-power-cable",
+      "year": "2024",
+      "summary": "Placeholder case study: armoured LT power cable supplied for internal power distribution across an industrial park.",
+      "image": "/images/portfolio/placeholder-2.svg",
+      "placeholder": true
+    },
+    {
+      "id": "proj-03",
+      "title": "Transmission Line Conductor Supply",
+      "client": "Placeholder Client C",
+      "location": "Eastern India",
+      "product": "acsr-conductor",
+      "year": "2023",
+      "summary": "Placeholder case study: ACSR conductor supplied for a multi-span overhead transmission line upgrade.",
+      "image": "/images/portfolio/placeholder-3.svg",
+      "placeholder": true
+    },
+    {
+      "id": "proj-04",
+      "title": "Residential Township Aerial Bunched Lines",
+      "client": "Placeholder Client D",
+      "location": "North 24 Parganas, West Bengal",
+      "product": "lt-ab-cable",
+      "year": "2023",
+      "summary": "Placeholder case study: LT AB cable supplied for overhead service connections across a residential township.",
+      "image": "/images/portfolio/placeholder-4.svg",
+      "placeholder": true
+    },
+    {
+      "id": "proj-05",
+      "title": "Commercial Complex Underground Feeders",
+      "client": "Placeholder Client E",
+      "location": "Kolkata, West Bengal",
+      "product": "lt-power-cable",
+      "year": "2023",
+      "summary": "Placeholder case study: underground LT power cable supplied for a commercial complex's incoming feeders.",
+      "image": "/images/portfolio/placeholder-5.svg",
+      "placeholder": true
+    },
+    {
+      "id": "proj-06",
+      "title": "River Crossing Span Conductor Supply",
+      "client": "Placeholder Client F",
+      "location": "West Bengal",
+      "product": "acsr-conductor",
+      "year": "2022",
+      "summary": "Placeholder case study: ACSR conductor supplied for a long-span river crossing section of a distribution line.",
+      "image": "/images/portfolio/placeholder-6.svg",
+      "placeholder": true
+    },
+    {
+      "id": "proj-07",
+      "title": "Street Lighting Feeder Replacement",
+      "client": "Placeholder Client G",
+      "location": "Howrah, West Bengal",
+      "product": "lt-ab-cable",
+      "year": "2022",
+      "summary": "Placeholder case study: LT AB cable supplied to replace ageing bare conductor on municipal street-lighting feeders.",
+      "image": "/images/portfolio/placeholder-7.svg",
+      "placeholder": true
+    },
+    {
+      "id": "proj-08",
+      "title": "Factory Expansion Power Wiring",
+      "client": "Placeholder Client H",
+      "location": "Jaypur, Howrah",
+      "product": "lt-power-cable",
+      "year": "2022",
+      "summary": "Placeholder case study: LT power cable supplied for the panel-to-switchgear wiring of a factory expansion project.",
+      "image": "/images/portfolio/placeholder-8.svg",
+      "placeholder": true
+    }
+  ]
+}

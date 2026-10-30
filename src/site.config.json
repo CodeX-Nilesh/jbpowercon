@@ -1,0 +1,25 @@
+{
+  "SITE_URL": "https://jbpowercon.com",
+  "SITE_NAME": "JB Powercon Pvt. Ltd.",
+  "BRAND_NAME": "POWERCON",
+  "LEGAL_NAME": "JB Powercon Pvt. Ltd.",
+  "GSTIN": "19AAGCJ3269B1ZL",
+  "ISO_9001": "ISO 9001:2015",
+  "ISO_14001": "ISO 14001:2015",
+  "UDYAM_NUMBER": "TODO: verify — company-details text and certificate image disagree",
+  "ADDRESS": {
+    "line1": "NH-6, Bombay Road",
+    "line2": "Chamrail, Jaypur",
+    "city": "Howrah",
+    "state": "West Bengal",
+    "pincode": "711114",
+    "country": "India"
+  },
+  "CONTACTS": [
+    { "name": "Mr. Adesh Jain", "role": "Director", "phone": "9836369070", "whatsapp": "919836369070" },
+    { "name": "Mr. Sumeet Kr Bansal", "role": "Director", "phone": "9007283957", "whatsapp": "919007283957" }
+  ],
+  "EMAIL": "jbpowercon@gmail.com",
+  "GOOGLE_MAPS_URL": "https://www.google.com/maps/search/?api=1&query=NH-6%2C+Bombay+Road%2C+Chamrail%2C+Jaypur%2C+Howrah%2C+West+Bengal+711114",
+  "SOCIAL": {}
+}

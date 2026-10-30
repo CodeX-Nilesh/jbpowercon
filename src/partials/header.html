@@ -1,0 +1,59 @@
+<div class="loader" data-loader aria-hidden="true">
+  <p class="loader__word">JB POWERCON</p>
+  <div class="loader__bar"><span></span></div>
+</div>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a class="wordmark" href="{{site.SITE_URL}}/" style="animation-delay:0ms">JB <span>POWERCON</span></a>
+
+    <nav class="main-nav" aria-label="Primary">
+      <ul class="main-nav__list">
+        <li><a href="/" style="animation-delay:40ms">Home</a></li>
+        <li><a href="/products/" style="animation-delay:80ms">Products</a></li>
+        <li><a href="/about/" style="animation-delay:120ms">About</a></li>
+        <li><a href="/services/" style="animation-delay:160ms">Services</a></li>
+        <li><a href="/team/" style="animation-delay:200ms">Team</a></li>
+        <li><a href="/portfolio/" style="animation-delay:240ms">Portfolio</a></li>
+        <li><a href="/contact/" style="animation-delay:280ms">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn--primary" href="/contact/">Get a Quote</a>
+      <button class="menu-toggle" type="button" data-menu-open aria-haspopup="dialog" aria-controls="mobile-nav">
+        <span class="visually-hidden">Open menu</span>
+        <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<dialog id="mobile-nav" class="mobile-nav" aria-label="Site navigation">
+  <div class="mobile-nav__bar">
+    <span class="wordmark">JB <span>POWERCON</span></span>
+    <button class="mobile-nav__close" type="button" data-menu-close>
+      <span class="visually-hidden">Close menu</span>
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <ul class="mobile-nav__list">
+    <li><a href="/">Home</a></li>
+    <li><a href="/products/">Products</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/services/">Services</a></li>
+    <li><a href="/team/">Team</a></li>
+    <li><a href="/portfolio/">Portfolio</a></li>
+    <li><a href="/contact/">Contact</a></li>
+  </ul>
+  <div class="container">
+    <a class="btn btn--primary" href="/contact/" style="width:100%">Get a Quote</a>
+  </div>
+</dialog>
+
+<div class="mobile-cta-bar">
+  <a href="tel:+91{{site.CONTACTS.0.phone}}">Call</a>
+  <a href="https://wa.me/{{site.CONTACTS.0.whatsapp}}" target="_blank" rel="noopener">WhatsApp</a>
+</div>

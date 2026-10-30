@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-label="Map showing JB Powercon's location at Chamrail, Howrah">
+  <rect width="1200" height="420" fill="#DBD7D4"/>
+  <g stroke="#24282B" stroke-opacity="0.18" stroke-width="2">
+    <line x1="0" y1="90" x2="1200" y2="60"/>
+    <line x1="0" y1="220" x2="1200" y2="250"/>
+    <line x1="0" y1="340" x2="1200" y2="310"/>
+    <line x1="180" y1="0" x2="140" y2="420"/>
+    <line x1="520" y1="0" x2="560" y2="420"/>
+    <line x1="900" y1="0" x2="940" y2="420"/>
+  </g>
+  <g stroke="#24282B" stroke-opacity="0.3" stroke-width="4">
+    <line x1="0" y1="170" x2="1200" y2="150"/>
+  </g>
+  <circle cx="600" cy="190" r="140" fill="#FD5E00" opacity="0.08"/>
+  <g transform="translate(600,190)">
+    <path d="M0 -46 C 26 -46 46 -26 46 0 C 46 32 0 70 0 70 C 0 70 -46 32 -46 0 C -46 -26 -26 -46 0 -46 Z" fill="#FD5E00"/>
+    <circle cx="0" cy="-2" r="16" fill="#ffffff"/>
+  </g>
+  <rect x="24" y="24" width="300" height="76" rx="8" fill="#ffffff" opacity="0.92"/>
+  <text x="44" y="54" font-family="Georgia, serif" font-size="20" fill="#24282B">JB Powercon Works</text>
+  <text x="44" y="78" font-family="sans-serif" font-size="14" fill="#24282B" opacity="0.7">Chamrail, Howrah, West Bengal</text>
+</svg>

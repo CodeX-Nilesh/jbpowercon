@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Placeholder image for ADESH JAIN">
+  <rect width="800" height="600" fill="#DBD7D4"/>
+  <g stroke="#24282B" stroke-opacity="0.12" stroke-width="1">
+    <line x1="0" y1="0" x2="800" y2="600"/>
+    <line x1="800" y1="0" x2="0" y2="600"/>
+  </g>
+  <rect x="24" y="24" width="120" height="36" fill="#FD5E00"/>
+  <text x="42" y="48" font-family="Georgia, serif" font-size="18" fill="#24282B"></text>
+  <text x="400" y="310" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#24282B">ADESH JAIN</text>
+  <text x="400" y="340" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#24282B" opacity="0.6">Placeholder — replace with real photo</text>
+</svg>

@@ -1,0 +1,10 @@
+{
+  "name": "jbpowercon-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Business website for JB Powercon Pvt Ltd",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}

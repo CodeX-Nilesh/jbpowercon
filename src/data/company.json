@@ -1,0 +1,59 @@
+{
+  "placeholder": false,
+  "_todo": [
+    "Founded year / date of incorporation not stated in the 'About Us' or 'Company Details' brochure pages — only the Udyam certificate (not transcribed in detail) carries an incorporation date; confirm with the client.",
+    "Udyam registration number DIFFERS between the brochure's own 'Company Details' text page ('UDYAM-WB-08-0038083') and its Udyam Registration Certificate image ('UDYAM-WB-08-0070734'). Kept both below as printed — do not silently pick one. Ask the client which is correct.",
+    "PAN (AAGCJ326GB), DIN numbers (Adesh Jain 00854066, Sumeet Kr Bansal 02236184), IEC (AAGCJ3269B) and Trade Licence No. (3567) are in the brochure but are intentionally left OFF this file / the public site per project rules."
+  ],
+  "legalName": "JB Powercon Pvt. Ltd.",
+  "brandName": "POWERCON",
+  "tagline": "Power cables and conductors, built to carry the load.",
+  "about": {
+    "summary": "JBPPL develops and markets a wide range of wires, cables and conductors for domestic markets. JBPPL manufactures Low Voltage (LV) power cables, aerial bunched cables and conductors, serving both retail and institutional segments under the brand name \"POWERCON\". To strengthen the supply chain, JBPPL believes in expanding to new verticals through backward integration for wires and cables; our clientele includes reputed Central & State Government power distribution houses.",
+    "foundedYear": "TODO: not stated in brochure text — confirm with client",
+    "mission": "Power India's growth. Lead in renewable energy. Invest in people and technology for the future. Diversify and expand. Make social responsibility personal through impactful CSR initiatives.",
+    "vision": "Empowering India: be the leading Power Infrastructure Company in India, driving national progress. Self-Reliant India: champion 'Make in India', fostering domestic manufacturing excellence. Global Footprint: expand our reach, catering to domestic demand and exploring global opportunities. Tech-Enabled Manufacturing: embed technology in our DNA, striving for 100% automation under human supervision.",
+    "history": "TODO: brochure has no dedicated company-history/timeline section beyond the About Us summary above — confirm with client if one should be added."
+  },
+  "certifications": [
+    {
+      "name": "ISO 9001:2015",
+      "scope": "Quality Management System",
+      "certNumber": "E20251034256"
+    },
+    {
+      "name": "ISO 14001:2015",
+      "scope": "Environmental Management System",
+      "certNumber": "E20251034257"
+    }
+  ],
+  "certificationBody": "Royal Assessments Pvt. Ltd. (RAPL)",
+  "certificationDate": "2025-10-22",
+  "certificationValidUntil": "2028-10-21",
+  "certificationScope": "Manufacture and supply of bare & insulated, covered conductors (i.e. ACSR, AAC, AAAC, stranded aluminium wire) for power transmission & distribution lines and AB cables XLPE (aluminium), UG cable, PVC & XLPE insulated sheathed, unsheathed armoured and unarmoured single, multicore cables, power cables.",
+  "udyam": {
+    "numberPerCompanyText": "UDYAM-WB-08-0038083",
+    "numberPerCertificate": "UDYAM-WB-08-0070734",
+    "note": "These two numbers disagree between the brochure's text page and its certificate image — confirm the correct one with the client before publishing either."
+  },
+  "gstin": "19AAGCJ3269B1ZL",
+  "address": {
+    "line1": "NH-6, Bombay Road",
+    "line2": "Chamrail, Jaypur",
+    "city": "Howrah",
+    "state": "West Bengal",
+    "pincode": "711114",
+    "country": "India"
+  },
+  "contacts": [
+    { "name": "Mr. Adesh Jain", "role": "Director", "phone": "9836369070", "whatsapp": "919836369070" },
+    { "name": "Mr. Sumeet Kr Bansal", "role": "Director", "phone": "9007283957", "whatsapp": "919007283957" }
+  ],
+  "email": "jbpowercon@gmail.com",
+  "stats": [
+    { "value": "TODO", "label": "Years in operation", "placeholder": true },
+    { "value": "3", "label": "Core product lines", "placeholder": false },
+    { "value": "2", "label": "ISO certifications", "placeholder": false },
+    { "value": "24", "label": "Machines on the factory floor", "placeholder": false }
+  ]
+}

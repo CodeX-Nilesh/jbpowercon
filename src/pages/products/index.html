@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Products — LT Power Cables, LT AB Cables &amp; ACSR Conductors | JB Powercon</title>
+<meta name="description" content="Browse JB Powercon's LT power cables, LT AB (aerial bunched) cables and ACSR conductors, manufactured to IS standards in Howrah, West Bengal." />
+<link rel="canonical" href="{{site.SITE_URL}}/products/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Products | JB Powercon" />
+<meta property="og:description" content="LT power cables, LT AB cables and ACSR conductors manufactured to IS standards." />
+<meta property="og:url" content="{{site.SITE_URL}}/products/" />
+<meta property="og:image" content="{{site.SITE_URL}}/images/og-default.svg" />
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+<link rel="stylesheet" href="/css/main.css" />
+{{> partials/jsonld-org.html}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{site.SITE_URL}}/" },
+    { "@type": "ListItem", "position": 2, "name": "Products", "item": "{{site.SITE_URL}}/products/" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between LT power cable and LT AB cable?",
+      "acceptedAnswer": { "@type": "Answer", "text": "LT power cables are insulated and often armoured cables laid underground or in conduit for distribution within a site. LT AB (aerial bunched) cables carry the same low-tension supply overhead, with insulated phase conductors bunched around a messenger wire instead of being run as separate bare conductors." }
+    },
+    {
+      "@type": "Question",
+      "name": "What standard applies to ACSR conductors?",
+      "acceptedAnswer": { "@type": "Answer", "text": "ACSR (Aluminium Conductor Steel Reinforced) conductors are manufactured to IS 398 (Part 2)." }
+    },
+    {
+      "@type": "Question",
+      "name": "Can JB Powercon manufacture to a custom specification?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — conductor size, core count and armouring can be built to your drawing or IS specification. Contact us with your requirement for a quote." }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+{{> partials/header.html}}
+
+<main id="main">
+  <div class="container" style="padding-top:var(--space-4)">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li aria-current="page">Products</li>
+      </ol>
+    </nav>
+  </div>
+
+  <section class="section--tight container">
+    <p class="hero__eyebrow">Products</p>
+    <h1 style="max-width:16ch">Cables and conductors, manufactured to IS standards.</h1>
+  </section>
+
+  <section class="section container" data-reveal-group>
+    <div class="grid-12">
+      {{#each data.products.items}}
+      <a class="product-card reveal" style="grid-column:span 4" href="/products/{{slug}}/">
+        <div class="product-card__media">
+          <img src="{{heroImage}}" alt="{{shortName}}" width="800" height="600" loading="lazy" />
+        </div>
+        <div class="product-card__body">
+          <p class="product-card__eyebrow">{{category}}</p>
+          <h2 class="product-card__title">{{shortName}}</h2>
+          <p style="margin-top:var(--space-1);color:var(--text-muted)">{{summary}}</p>
+        </div>
+      </a>
+      {{/each}}
+    </div>
+  </section>
+
+  <hr class="rule container" />
+
+  <section class="section container" data-reveal-group>
+    <div class="section-head">
+      <h2 class="reveal"><span class="section-number">02</span>Frequently asked questions</h2>
+    </div>
+    <div class="grid-12">
+      <div style="grid-column:span 6" class="card reveal">
+        <h3 style="font-size:1.0625rem">What is the difference between LT power cable and LT AB cable?</h3>
+        <p style="margin-top:var(--space-2);color:var(--text-muted)">LT power cables are insulated and often armoured cables laid underground or in conduit. LT AB cables carry the same low-tension supply overhead, bunched around a messenger wire instead of run as bare conductors.</p>
+      </div>
+      <div style="grid-column:span 6" class="card reveal">
+        <h3 style="font-size:1.0625rem">What standard applies to ACSR conductors?</h3>
+        <p style="margin-top:var(--space-2);color:var(--text-muted)">ACSR (Aluminium Conductor Steel Reinforced) conductors are manufactured to IS 398 (Part 2).</p>
+      </div>
+      <div style="grid-column:span 6" class="card reveal">
+        <h3 style="font-size:1.0625rem">Can JB Powercon manufacture to a custom specification?</h3>
+        <p style="margin-top:var(--space-2);color:var(--text-muted)">Yes — conductor size, core count and armouring can be built to your drawing or IS specification.</p>
+      </div>
+      <div style="grid-column:span 6" class="card reveal">
+        <h3 style="font-size:1.0625rem">How do I get a quote?</h3>
+        <p style="margin-top:var(--space-2);color:var(--text-muted)">WhatsApp or call us with your product, size/spec and approximate quantity — see our <a href="/contact/" style="text-decoration:underline">Contact</a> page.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+{{> partials/footer.html}}
+
+<script src="/js/main.js" defer></script>
+</body>
+</html>

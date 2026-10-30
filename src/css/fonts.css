@@ -1,0 +1,58 @@
+/* Self-hosted fonts. Files live in /src/fonts and are copied to /dist/fonts.
+   Sreda licence is unverified — if sreda-*.woff2 is absent the browser just
+   fails this @font-face and falls through to Arvo, so the build never
+   breaks. See TODO.md. */
+
+@font-face {
+  font-family: "Sreda";
+  src: url("../fonts/sreda-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sreda";
+  src: url("../fonts/sreda-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Arvo";
+  src: url("../fonts/arvo-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  /* Metric overrides keep the Georgia/system fallback from shifting layout
+     before Arvo paints. Re-measure once real files are in /src/fonts. */
+  size-adjust: 107%;
+  ascent-override: 95%;
+  descent-override: 25%;
+}
+
+@font-face {
+  font-family: "Arvo";
+  src: url("../fonts/arvo-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../fonts/inter-variable.woff2") format("woff2-variations");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+  size-adjust: 100%;
+  ascent-override: 90%;
+  descent-override: 22%;
+}
+
+@supports (font-variation-settings: normal) {
+  :root {
+    --font-body: "Inter var", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+}

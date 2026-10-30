@@ -1,0 +1,66 @@
+:root {
+  /* Brand colors — the only three hues in this system. Every other color
+     below is mixed from these three; never add a new hex value elsewhere. */
+  --ink: #24282B;
+  --stone: #DBD7D4;
+  --accent: #FD5E00;
+
+  --ink-10: color-mix(in srgb, var(--ink) 10%, white);
+  --ink-70: color-mix(in srgb, var(--ink) 70%, white);
+  --ink-85: color-mix(in srgb, var(--ink) 85%, white);
+  --stone-light: color-mix(in srgb, var(--stone) 35%, white);
+  --stone-dark: color-mix(in srgb, var(--stone) 65%, var(--ink));
+  --accent-dark: color-mix(in srgb, var(--accent) 82%, var(--ink));
+  --accent-tint: color-mix(in srgb, var(--accent) 10%, white);
+  --accent-tint-strong: color-mix(in srgb, var(--accent) 22%, white);
+
+  --surface: #ffffff;
+  --surface-alt: var(--stone-light);
+  --surface-ink: var(--ink);
+  --border-hairline: color-mix(in srgb, var(--ink) 18%, white);
+  --border-on-ink: color-mix(in srgb, white 20%, var(--ink));
+
+  --text: var(--ink);
+  --text-muted: var(--ink-70);
+  --text-on-accent: var(--ink); /* never white on orange */
+  --text-on-ink: #ffffff;
+  --text-on-ink-muted: color-mix(in srgb, white 70%, var(--ink));
+
+  /* Type */
+  --font-display: "Sreda", "Arvo", Georgia, serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --fs-display: clamp(3rem, 2.1rem + 3.6vw, 6rem);
+  --fs-h2: clamp(2rem, 1.4rem + 2.4vw, 3.5rem);
+  --fs-h3: clamp(1.375rem, 1.2rem + 0.7vw, 1.75rem);
+  --fs-body: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+  --fs-caption: 0.8125rem;
+
+  --lh-heading-display: 1.05;
+  --lh-heading: 1.15;
+  --lh-body: 1.6;
+  --measure: 68ch;
+
+  --tracking-tight: -0.01em;
+  --tracking-label: 0.08em;
+
+  /* 8px spacing scale */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-12: 96px;
+  --space-16: 128px;
+
+  --radius: 4px;
+  --radius-lg: 10px;
+  --container-max: 1280px;
+  --gutter: var(--space-3);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration: 250ms;
+  --duration-slow: 400ms;
+}

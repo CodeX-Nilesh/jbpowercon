@@ -1,0 +1,67 @@
+{
+  "placeholder": false,
+  "_todo": "Director names and bios are transcribed from the brochure (pages 5-7). The org chart's tier titles and reporting structure are confirmed exactly against the brochure's own org chart image (page 8). Only the individual role-holders below the two Directors (Production Manager, Quality Manager, Marketing Manager, Chartered Accountant, Production/Quality Incharge, Market Executive, Accounts Manager, Shift Supervisors x2, Accounts Executive) are not named in the brochure — still TODO pending client input.",
+  "leadership": [
+    {
+      "name": "Mr. Adesh Jain",
+      "title": "Director (Production & Purchase)",
+      "bio": "With over three decades of experience in the industrial and trading sectors, Mr. Adesh Jain began his professional journey at the age of 18, before completing his graduation from Kolkata University. Rising through the ranks, he progressed from a regular staff role to Director of his own company, gaining in-depth operational and strategic expertise. After retiring from that role at 45, he turned to entrepreneurship, trading ferrous and non-ferrous metals for over five years — hands-on experience in procurement, logistics and market dynamics that laid the foundation for what followed. He has managed complete iron and steel factory setups from land acquisition through to day-to-day operations, and now brings that experience to cable and conductor manufacturing, serving India's growing infrastructure and energy sectors.",
+      "photo": "/images/team/adesh-jain.svg",
+      "placeholderPhoto": true
+    },
+    {
+      "name": "Mr. Sumeet Kr Bansal",
+      "title": "Director (Finance & Banking)",
+      "bio": "With over 25 years of entrepreneurial experience, Mr. Sumeet Kr Bansal built a strong foundation in trading before moving into manufacturing. After graduating in 1996, he joined his family business, developing a deep understanding of sales, procurement and human resource management. His career has been marked by resilience, adaptability and a hands-on approach to leadership — forging supplier relationships, managing teams and steering through market volatility. He now brings that trading expertise to a renewed focus on manufacturing, building a forward-looking, quality-driven enterprise.",
+      "photo": "/images/team/sumeet-bansal.svg",
+      "placeholderPhoto": true
+    }
+  ],
+  "orgChart": {
+    "title": "Directors",
+    "name": "Mr. Adesh Jain & Mr. Sumeet Kr Bansal",
+    "children": [
+      {
+        "title": "Production Manager",
+        "name": "TODO",
+        "children": [
+          {
+            "title": "Production Incharge",
+            "name": "TODO",
+            "children": [
+              { "title": "Shift Supervisor", "name": "TODO" },
+              { "title": "Shift Supervisor", "name": "TODO" }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Quality Manager",
+        "name": "TODO",
+        "children": [
+          { "title": "Quality Incharge", "name": "TODO" }
+        ]
+      },
+      {
+        "title": "Marketing Manager",
+        "name": "TODO",
+        "children": [
+          { "title": "Market Executive", "name": "TODO" }
+        ]
+      },
+      {
+        "title": "Chartered Accountant",
+        "name": "TODO",
+        "children": [
+          {
+            "title": "Accounts Manager",
+            "name": "TODO",
+            "children": [
+              { "title": "Accounts Executive", "name": "TODO" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

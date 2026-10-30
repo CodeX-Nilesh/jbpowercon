@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Manufacturing &amp; Quality Testing Services | JB Powercon</title>
+<meta name="description" content="From conductor drawing to armouring and in-house HV/insulation testing — see how JB Powercon manufactures and quality-checks every cable and conductor." />
+<link rel="canonical" href="{{site.SITE_URL}}/services/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Manufacturing &amp; Quality Testing Services | JB Powercon" />
+<meta property="og:description" content="Manufacturing and in-house quality testing for LT power cables, LT AB cables and ACSR conductors." />
+<meta property="og:url" content="{{site.SITE_URL}}/services/" />
+<meta property="og:image" content="{{site.SITE_URL}}/images/og-default.svg" />
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+<link rel="stylesheet" href="/css/main.css" />
+{{> partials/jsonld-org.html}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{site.SITE_URL}}/" },
+    { "@type": "ListItem", "position": 2, "name": "Services", "item": "{{site.SITE_URL}}/services/" }
+  ]
+}
+</script>
+</head>
+<body>
+
+{{> partials/header.html}}
+
+<main id="main">
+  <div class="container" style="padding-top:var(--space-4)">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li aria-current="page">Services</li>
+      </ol>
+    </nav>
+  </div>
+
+  <section class="section--tight container">
+    <p class="hero__eyebrow">What we do</p>
+    <h1 style="max-width:18ch">From conductor drawing to the finished reel, tested at every stage.</h1>
+    <p class="hero__lede" style="margin-top:var(--space-3)">JB Powercon runs manufacturing and in-house quality testing under one roof at Chamrail, Howrah, so every cable and conductor leaving the works is checked before it ships.</p>
+  </section>
+
+  <section class="section container" data-reveal-group>
+    <div class="section-head">
+      <h2 class="reveal"><span class="section-number">01</span>Capabilities</h2>
+    </div>
+    <div class="grid-12">
+      <div style="grid-column:span 4" class="card reveal">
+        <p class="label">01</p>
+        <h3 style="margin-top:var(--space-1);font-size:1.25rem">Manufacturing</h3>
+        <p style="margin-top:var(--space-2);color:var(--text-muted)">Wire drawing, stranding, insulation and sheath extrusion, and armouring, carried out in sequence on-site.</p>
+      </div>
+      <div style="grid-column:span 4" class="card reveal">
+        <p class="label">02</p>
+        <h3 style="margin-top:var(--space-1);font-size:1.25rem">In-house testing</h3>
+        <p style="margin-top:var(--space-2);color:var(--text-muted)">HV, insulation resistance and tensile testing on our own equipment before dispatch — see our test lab below.</p>
+      </div>
+      <div style="grid-column:span 4" class="card reveal">
+        <p class="label">03</p>
+        <h3 style="margin-top:var(--space-1);font-size:1.25rem">Bulk &amp; project supply</h3>
+        <p style="margin-top:var(--space-2);color:var(--text-muted)">Scheduled supply for utility, EPC and industrial projects, from single reels to bulk orders.</p>
+      </div>
+      <div style="grid-column:span 4" class="card reveal">
+        <p class="label">04</p>
+        <h3 style="margin-top:var(--space-1);font-size:1.25rem">Custom specifications</h3>
+        <p style="margin-top:var(--space-2);color:var(--text-muted)">Conductor size, core count and armouring built to your drawing or IS specification.</p>
+      </div>
+      <div style="grid-column:span 4" class="card reveal">
+        <p class="label">05</p>
+        <h3 style="margin-top:var(--space-1);font-size:1.25rem">Technical support</h3>
+        <p style="margin-top:var(--space-2);color:var(--text-muted)">Our team helps you select the right cable or conductor for the application before you order.</p>
+      </div>
+      <div style="grid-column:span 4" class="card reveal">
+        <p class="label">06</p>
+        <h3 style="margin-top:var(--space-1);font-size:1.25rem">Logistics &amp; delivery</h3>
+        <p style="margin-top:var(--space-2);color:var(--text-muted)">Reel packing and dispatch coordinated to your site schedule across West Bengal and beyond.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule container" />
+
+  <section class="section container" data-reveal-group>
+    <div class="section-head">
+      <h2 class="reveal"><span class="section-number">02</span>On the factory floor</h2>
+    </div>
+    <div class="spec-table-wrap reveal">
+      <table class="spec-table">
+        <caption class="visually-hidden">Machinery at JB Powercon</caption>
+        <thead>
+          <tr><th>Machine</th><th>Make</th><th>Quantity</th><th>Capacity</th></tr>
+        </thead>
+        <tbody>
+          {{#each data.machinery.items}}
+          <tr><td>{{name}}</td><td>{{make}}</td><td>{{qty}}</td><td>{{capacity}}</td></tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <div class="spec-cards">
+        {{#each data.machinery.items}}
+        <div class="card">
+          <h3 style="font-size:1.0625rem;font-family:var(--font-body);font-weight:700">{{name}}</h3>
+          <dl>
+            <dt>Make</dt><dd>{{make}}</dd>
+            <dt>Quantity</dt><dd>{{qty}}</dd>
+            <dt>Capacity</dt><dd>{{capacity}}</dd>
+          </dl>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule container" />
+
+  <section class="section container" data-reveal-group>
+    <div class="section-head">
+      <h2 class="reveal"><span class="section-number">03</span>Quality testing</h2>
+    </div>
+    <div class="spec-table-wrap reveal">
+      <table class="spec-table">
+        <caption class="visually-hidden">Test equipment at JB Powercon</caption>
+        <thead>
+          <tr><th>No.</th><th>Equipment</th><th>Make</th><th>Range</th></tr>
+        </thead>
+        <tbody>
+          {{#each data.tests.items}}
+          <tr><td>{{no}}</td><td>{{name}}</td><td>{{make}}</td><td>{{range}}</td></tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <div class="spec-cards">
+        {{#each data.tests.items}}
+        <div class="card">
+          <h3 style="font-size:1.0625rem;font-family:var(--font-body);font-weight:700">{{no}}. {{name}}</h3>
+          <dl>
+            <dt>Make</dt><dd>{{make}}</dd>
+            <dt>Range</dt><dd>{{range}}</dd>
+          </dl>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+    <p class="label" style="margin-top:var(--space-2)">All instruments above carry valid calibration.</p>
+  </section>
+
+  <section class="section--tight container">
+    <div class="card" style="background:var(--accent-tint);border-color:var(--accent);display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;justify-content:space-between">
+      <h2 style="font-size:var(--fs-h3);max-width:32ch">Have a specification in mind?</h2>
+      <a class="btn btn--primary" href="/contact/">Talk to us</a>
+    </div>
+  </section>
+</main>
+
+{{> partials/footer.html}}
+
+<script src="/js/main.js" defer></script>
+</body>
+</html>
