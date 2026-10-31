@@ -10,9 +10,10 @@
 <meta property="og:title" content="LT Power Cable, LT AB Cable &amp; ACSR Conductor Manufacturer | JB Powercon" />
 <meta property="og:description" content="ISO-certified manufacturer of LT power cables, LT AB cables and ACSR conductors from Howrah, West Bengal." />
 <meta property="og:url" content="{{site.SITE_URL}}/" />
-<meta property="og:image" content="{{site.SITE_URL}}/images/og-default.svg" />
-<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
-<link rel="preload" as="font" type="font/woff2" href="/fonts/sreda-400.woff2" crossorigin />
+<meta property="og:image" content="{{site.SITE_URL}}/images/factory/hero.webp" />
+<link rel="icon" type="image/png" href="/images/favicon-32.png" />
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+<link rel="preload" as="font" type="font/woff2" href="/fonts/space-grotesk-variable.woff2" crossorigin />
 <link rel="stylesheet" href="/css/main.css" />
 {{> partials/jsonld-org.html}}
 </head>
@@ -26,8 +27,8 @@
     <div class="hero__grid">
       <div>
         <p class="hero__eyebrow">ISO 9001:2015 &amp; ISO 14001:2015 Certified</p>
-        <h1 class="hero__title">Power cables and conductors, built to carry the load.</h1>
-        <p class="hero__lede">JB Powercon manufactures LT power cables, LT AB cables and ACSR conductors at Chamrail, Howrah — engineered to IS standards and backed by in-house testing.</p>
+        <h1 class="hero__title">Where safety meets superior performance.</h1>
+        <p class="hero__lede">JB Powercon is a cable and conductor manufacturer in Howrah, West Bengal — LT power cables, LT AB cables and ACSR conductors, engineered to IS standards and backed by in-house testing.</p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="https://wa.me/{{site.CONTACTS.0.whatsapp}}" target="_blank" rel="noopener">WhatsApp for a Quote</a>
           <a class="btn btn--outline" href="/products/">View Products</a>
@@ -58,8 +59,6 @@
     </div>
   </section>
 
-  <hr class="rule container" />
-
   <section class="section container" data-reveal-group>
     <div class="section-head">
       <h2 class="reveal"><span class="section-number">02</span>Products</h2>
@@ -67,45 +66,50 @@
     </div>
     <div class="grid-12">
       {{#each data.products.items}}
-      <a class="product-card reveal" style="grid-column:span 4" href="/products/{{slug}}/">
+      <a class="product-card reveal col-4" href="/products/{{slug}}/">
         <div class="product-card__media">
           <img src="{{heroImage}}" alt="{{shortName}}" width="800" height="600" loading="lazy" />
         </div>
         <div class="product-card__body">
           <p class="product-card__eyebrow">{{category}}</p>
           <h3 class="product-card__title">{{shortName}}</h3>
-          <p style="margin-top:var(--space-1);color:var(--text-muted)">{{summary}}</p>
+          <p style="margin-top:var(--space-1);color:var(--muted)">{{summary}}</p>
         </div>
       </a>
       {{/each}}
     </div>
   </section>
 
-  <hr class="rule container" />
-
   <section class="section container" data-reveal-group>
     <div class="grid-12" style="align-items:center">
-      <div style="grid-column:span 6" class="reveal">
+      <div class="reveal col-6">
         <h2><span class="section-number">03</span>About the works</h2>
-        <p style="margin-top:var(--space-3);color:var(--text-muted)">{{data.company.about.summary}}</p>
+        <p style="margin-top:var(--space-3);color:var(--muted)">{{data.company.about.summary}}</p>
         <a class="btn btn--ink" style="margin-top:var(--space-3)" href="/about/">About JB Powercon</a>
       </div>
-      <div style="grid-column:span 6" class="reveal">
+      <div class="reveal col-6">
         <img src="/images/factory/floor.webp" alt="Production floor at JB Powercon" width="1085" height="600" loading="lazy" style="border-radius:var(--radius-lg)" />
       </div>
     </div>
   </section>
 
-  <hr class="rule container" />
-
   <section class="section container" data-reveal-group>
     <div class="section-head">
       <h2 class="reveal"><span class="section-number">04</span>What customers say</h2>
     </div>
-    <div class="testimonial-slider reveal" data-slider>
-      <div class="testimonial-slider__track" data-slider-track>
+    <div class="marquee reveal" data-marquee>
+      <div class="marquee__track" data-marquee-track>
         {{#each data.testimonials.items}}
-        <article class="testimonial-slider__item">
+        <article class="marquee__item">
+          <div class="card testimonial-card">
+            <p class="testimonial-card__quote">&ldquo;{{quote}}&rdquo;</p>
+            <p class="testimonial-card__name">{{name}}</p>
+            <p class="testimonial-card__role">{{role}}</p>
+          </div>
+        </article>
+        {{/each}}
+        {{#each data.testimonials.items}}
+        <article class="marquee__item" aria-hidden="true">
           <div class="card testimonial-card">
             <p class="testimonial-card__quote">&ldquo;{{quote}}&rdquo;</p>
             <p class="testimonial-card__name">{{name}}</p>
@@ -114,15 +118,15 @@
         </article>
         {{/each}}
       </div>
-      <div class="testimonial-slider__controls">
-        <button type="button" data-slider-prev aria-label="Previous testimonial">&larr;</button>
-        <button type="button" data-slider-next aria-label="Next testimonial">&rarr;</button>
-      </div>
+      <button type="button" class="marquee__toggle" data-marquee-toggle aria-pressed="false">
+        <span class="marquee__toggle-pause">Pause</span>
+        <span class="marquee__toggle-play">Play</span>
+      </button>
     </div>
   </section>
 
   <section class="section--tight container">
-    <div class="card" style="background:var(--accent-tint);border-color:var(--accent);display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;justify-content:space-between">
+    <div class="cta-band">
       <h2 style="font-size:var(--fs-h3);max-width:32ch">Need a quote on power cables or conductors?</h2>
       <div style="display:flex;gap:var(--space-2);flex-wrap:wrap">
         <a class="btn btn--ink" href="tel:+91{{site.CONTACTS.0.phone}}">Call {{site.CONTACTS.0.phone}}</a>

@@ -1,27 +1,61 @@
 (function () {
   "use strict";
 
-  // ---- Session loader ----
-  var loader = document.querySelector("[data-loader]");
-  if (loader) {
-    try {
-      if (sessionStorage.getItem("jbp-loader-seen")) {
-        loader.remove();
-      } else {
-        sessionStorage.setItem("jbp-loader-seen", "1");
-        var hide = function () {
-          loader.classList.add("is-hidden");
-          setTimeout(function () {
-            loader.remove();
-          }, 400);
-        };
-        if (document.readyState === "complete") hide();
-        else window.addEventListener("load", hide, { once: true });
-        setTimeout(hide, 600);
+  // ---- Preloader ----
+  // Runs on every page load (not gated by sessionStorage) since this is a
+  // traditional multi-page site — every navigation is a fresh load.
+  var preloader = document.getElementById("preloader");
+  if (preloader) {
+    var hidePreloader = function () {
+      preloader.classList.add("is-hidden");
+      setTimeout(function () {
+        preloader.style.display = "none";
+      }, 450);
+    };
+    if (document.readyState === "complete") hidePreloader();
+    else window.addEventListener("load", hidePreloader, { once: true });
+    // bfcache restore: page is already fully loaded, don't replay it
+    window.addEventListener("pageshow", function (e) {
+      if (e.persisted) {
+        preloader.classList.add("is-hidden");
+        preloader.style.display = "none";
       }
-    } catch (e) {
-      loader.remove();
-    }
+    });
+  }
+
+  // ---- Section fade-in ----
+  // .hero is excluded in CSS (holds the LCP image). First-view sections
+  // (already in the viewport when the observer attaches) wait to animate
+  // until the preloader's own "done" signal, so they don't fade in
+  // underneath it; below-fold sections just reveal on scroll as normal.
+  var fadeSections = document.querySelectorAll("main > section:not(.hero)");
+  if (fadeSections.length && "IntersectionObserver" in window) {
+    var pendingFirstView = [];
+    var fadeInReady = false;
+
+    var sectionObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        sectionObs.unobserve(entry.target);
+        if (fadeInReady) entry.target.classList.add("in-view");
+        else pendingFirstView.push(entry.target);
+      });
+    }, { threshold: 0.1 });
+
+    fadeSections.forEach(function (s) {
+      sectionObs.observe(s);
+    });
+
+    var releaseFirstView = function () {
+      fadeInReady = true;
+      pendingFirstView.forEach(function (el) {
+        el.classList.add("in-view");
+      });
+      pendingFirstView = [];
+    };
+
+    if (document.readyState === "complete") releaseFirstView();
+    else window.addEventListener("load", releaseFirstView, { once: true });
   }
 
   // ---- Mobile nav dialog ----
@@ -117,19 +151,14 @@
     });
   }
 
-  // ---- Testimonial slider controls ----
-  document.querySelectorAll("[data-slider]").forEach(function (slider) {
-    var track = slider.querySelector("[data-slider-track]");
-    var prev = slider.querySelector("[data-slider-prev]");
-    var next = slider.querySelector("[data-slider-next]");
-    if (!track) return;
-    function scrollByCard(dir) {
-      var card = track.querySelector(".testimonial-slider__item");
-      var amount = card ? card.getBoundingClientRect().width + 24 : track.clientWidth;
-      track.scrollBy({ left: dir * amount, behavior: prefersReduced ? "auto" : "smooth" });
-    }
-    prev && prev.addEventListener("click", function () { scrollByCard(-1); });
-    next && next.addEventListener("click", function () { scrollByCard(1); });
+  // ---- Testimonials marquee pause/play ----
+  document.querySelectorAll("[data-marquee]").forEach(function (marquee) {
+    var toggle = marquee.querySelector("[data-marquee-toggle]");
+    if (!toggle) return;
+    toggle.addEventListener("click", function () {
+      var paused = marquee.classList.toggle("is-paused");
+      toggle.setAttribute("aria-pressed", String(paused));
+    });
   });
 
   // ---- Portfolio filter + detail dialog ----

@@ -10,8 +10,9 @@
 <meta property="og:title" content="Our Team | JB Powercon Pvt. Ltd." />
 <meta property="og:description" content="Leadership and organisational structure at JB Powercon." />
 <meta property="og:url" content="{{site.SITE_URL}}/team/" />
-<meta property="og:image" content="{{site.SITE_URL}}/images/og-default.svg" />
-<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+<meta property="og:image" content="{{site.SITE_URL}}/images/factory/hero.webp" />
+<link rel="icon" type="image/png" href="/images/favicon-32.png" />
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 <link rel="stylesheet" href="/css/main.css" />
 {{> partials/jsonld-org.html}}
 <script type="application/ld+json">
@@ -50,17 +51,15 @@
     </div>
     <div class="grid-12">
       {{#each data.team.leadership}}
-      <div style="grid-column:span 6" class="card reveal">
+      <div class="card reveal col-6">
         <img src="{{photo}}" alt="{{name}}, {{title}}" width="800" height="600" loading="lazy" style="border-radius:var(--radius);margin-bottom:var(--space-3)" />
         <h3 style="font-size:1.25rem">{{name}}</h3>
-        <p style="color:var(--text-muted);font-weight:600">{{title}}</p>
-        <p style="margin-top:var(--space-2);color:var(--text-muted);font-size:0.9375rem">{{bio}}</p>
+        <p style="color:var(--muted);font-weight:600">{{title}}</p>
+        <p style="margin-top:var(--space-2);color:var(--muted);font-size:0.9375rem">{{bio}}</p>
       </div>
       {{/each}}
     </div>
   </section>
-
-  <hr class="rule container" />
 
   <section class="section container" data-reveal-group>
     <div class="section-head">

@@ -21,5 +21,10 @@
   ],
   "EMAIL": "jbpowercon@gmail.com",
   "GOOGLE_MAPS_URL": "https://www.google.com/maps/search/?api=1&query=NH-6%2C+Bombay+Road%2C+Chamrail%2C+Jaypur%2C+Howrah%2C+West+Bengal+711114",
-  "SOCIAL": {}
+  "SOCIAL": {
+    "_todo": "Placeholder platform root URLs only — nobody has confirmed JB Powercon profiles exist at these. Replace with the real profile URLs before launch. Do NOT add these to Organization JSON-LD sameAs until they're confirmed real (see jsonld-org.html, which currently omits sameAs entirely).",
+    "facebook": "https://facebook.com",
+    "instagram": "https://instagram.com",
+    "youtube": "https://youtube.com"
+  }
 }

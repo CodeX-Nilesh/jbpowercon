@@ -1,0 +1,11 @@
+#preloader{position:fixed;inset:0;z-index:2000;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;animation:pf 0s 3.2s forwards}
+#preloader-word{margin:0;font-family:"Space Grotesk","Space Grotesk Fallback",system-ui,sans-serif;font-size:1.75rem;font-weight:700;animation:pp 1.2s ease infinite}
+#preloader .jb{color:#24282B}
+#preloader .powercon{color:#FD5E00}
+#preloader .line{width:160px;height:2px;border-radius:2px;background:#DBD7D4;overflow:hidden}
+#preloader .line span{display:block;height:100%;width:40%;background:#FD5E00;border-radius:2px;animation:ps 1.2s ease infinite}
+#preloader.is-hidden{opacity:0;pointer-events:none;transition:opacity 400ms ease-out}
+@keyframes pp{0%,100%{transform:scale(.96);opacity:.6}50%{transform:scale(1);opacity:1}}
+@keyframes ps{0%{transform:translateX(-120%)}50%,100%{transform:translateX(250%)}}
+@keyframes pf{to{display:none}}
+@media (prefers-reduced-motion:reduce){#preloader-word,#preloader .line span{animation:none}}

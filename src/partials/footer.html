@@ -1,19 +1,23 @@
 <footer class="site-footer">
   <div class="container site-footer__grid">
     <div>
-      <p class="wordmark" style="opacity:1;transform:none;animation:none">JB <span>POWERCON</span></p>
-      <p style="margin-top:var(--space-2);color:var(--text-on-ink-muted);max-width:32ch">
+      <a class="logo-link logo-link--footer" href="/" aria-label="{{site.LEGAL_NAME}} — home">
+        <img class="logo-link__icon" src="/images/logo-icon-reversed.webp" alt="" width="320" height="176" loading="lazy" />
+        <span class="logo-link__text logo-link__text--lg">JB<span>POWERCON</span></span>
+      </a>
+      <p class="site-footer__tagline">Crafted with Precision, Powered by Vision</p>
+      <p class="site-footer__desc">
         LT power cables, LT AB cables and ACSR conductors, manufactured at Chamrail, Howrah under ISO 9001:2015 and ISO 14001:2015.
       </p>
       <div class="badge-row" style="margin-top:var(--space-3)">
-        <span class="badge" style="border-color:var(--border-on-ink);color:var(--text-on-ink-muted)"><strong style="color:var(--text-on-ink)">ISO 9001:2015</strong></span>
-        <span class="badge" style="border-color:var(--border-on-ink);color:var(--text-on-ink-muted)"><strong style="color:var(--text-on-ink)">ISO 14001:2015</strong></span>
+        <span class="badge" style="border-color:var(--line);color:var(--muted)"><strong style="color:var(--fg)">ISO 9001:2015</strong></span>
+        <span class="badge" style="border-color:var(--line);color:var(--muted)"><strong style="color:var(--fg)">ISO 14001:2015</strong></span>
       </div>
     </div>
 
     <div>
       <p class="site-footer__heading">Navigate</p>
-      <ul class="site-footer__list">
+      <ul class="site-footer__list site-footer__list--nav">
         <li><a href="/">Home</a></li>
         <li><a href="/products/">Products</a></li>
         <li><a href="/about/">About</a></li>
@@ -25,19 +29,42 @@
     </div>
 
     <div>
-      <p class="site-footer__heading">Contact</p>
-      <ul class="site-footer__list">
-        <li>{{site.ADDRESS.line1}}, {{site.ADDRESS.line2}}</li>
-        <li>{{site.ADDRESS.city}}, {{site.ADDRESS.state}} {{site.ADDRESS.pincode}}</li>
-        <li><a href="tel:+91{{site.CONTACTS.0.phone}}">{{site.CONTACTS.0.name}} — {{site.CONTACTS.0.phone}}</a></li>
-        <li><a href="tel:+91{{site.CONTACTS.1.phone}}">{{site.CONTACTS.1.name}} — {{site.CONTACTS.1.phone}}</a></li>
-        <li><a href="mailto:{{site.EMAIL}}">{{site.EMAIL}}</a></li>
-      </ul>
+      <p class="site-footer__heading">Quick contact</p>
+      <div class="icon-btn-row">
+        <a class="icon-btn" href="tel:+91{{site.CONTACTS.0.phone}}" aria-label="Call {{site.CONTACTS.0.name}}">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.3 0 .7-.2 1z"/></svg>
+        </a>
+        <a class="icon-btn" href="https://wa.me/{{site.CONTACTS.0.whatsapp}}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp {{site.CONTACTS.0.name}}">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5 0-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.8c.1.1 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.3-.1 0-.3-.1-.5-.2z"/><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+        </a>
+        <a class="icon-btn" href="mailto:{{site.EMAIL}}" aria-label="Email {{site.LEGAL_NAME}}">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1.5 2 7.1 5.5a1 1 0 0 0 1.2 0L19.9 7H4.5zM21 8.4l-7 5.4a3 3 0 0 1-3.6 0L3 8.4V18h18V8.4z"/></svg>
+        </a>
+        <a class="icon-btn" href="{{site.GOOGLE_MAPS_URL}}" target="_blank" rel="noopener noreferrer" aria-label="{{site.LEGAL_NAME}} on Google Maps">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C7.6 2 4 5.6 4 10c0 5.4 6.9 11.2 7.2 11.4.2.2.5.2.7 0C12.1 21.2 20 15.4 20 10c0-4.4-3.6-8-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+        </a>
+      </div>
+
+      <p class="site-footer__heading" style="margin-top:var(--space-3)">Follow us</p>
+      <div class="icon-btn-row">
+        <a class="icon-btn" href="{{site.SOCIAL.facebook}}" target="_blank" rel="noopener noreferrer" aria-label="JB Powercon on Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 9.8V8c0-.5.3-.8.8-.8H16.5V4H14c-2.2 0-4 1.8-4 4v1.8H8V13h2v7h3v-7h2.3l.4-3.2H13V9.8c0 0 0 0 0 0z"/></svg>
+        </a>
+        <a class="icon-btn" href="{{site.SOCIAL.instagram}}" target="_blank" rel="noopener noreferrer" aria-label="JB Powercon on Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a class="icon-btn" href="{{site.SOCIAL.youtube}}" target="_blank" rel="noopener noreferrer" aria-label="JB Powercon on YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor"/><path d="M10.3 9.4v5.2l4.6-2.6z" fill="var(--ink-deep)"/></svg>
+        </a>
+        <a class="icon-btn" href="https://wa.me/{{site.CONTACTS.0.whatsapp}}" target="_blank" rel="noopener noreferrer" aria-label="JB Powercon on WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.2-.4.1-.2 0-.3 0-.5 0-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.8c.1.1 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.6.2-1.2.2-1.3-.1 0-.3-.1-.5-.2z"/><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2z"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 
   <div class="container site-footer__bottom">
-    <p>&copy; {{now.year}} {{site.LEGAL_NAME}}. All rights reserved. GSTIN {{site.GSTIN}}.</p>
+    <p>&copy; {{now.year}} {{site.LEGAL_NAME}}. All rights reserved.</p>
     <button type="button" class="site-footer__legal-btn" data-privacy-open>Privacy Policy</button>
   </div>
 </footer>

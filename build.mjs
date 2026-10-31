@@ -4,6 +4,7 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, statSync, existsSync, rmSync, copyFileSync } from 'node:fs';
 import { join, dirname, relative, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { minify } from 'terser';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const SRC = join(ROOT, 'src');
@@ -157,13 +158,28 @@ function outputPathFor(relPagePath) {
 rmSync(DIST, { recursive: true, force: true });
 mkdirSync(DIST, { recursive: true });
 
+// Preloader: a single partial, injected as the first child of <body> on
+// EVERY page by the build itself (not by each page template remembering
+// to include it), with its own render-blocking stylesheet link added
+// right before main.css so it's never unstyled on first paint.
+const preloaderHtml = renderString(readFileSync(join(SRC, 'partials', 'preloader.html'), 'utf8'), [rootContext]);
+const PRELOADER_CSS_LINK = '<link rel="stylesheet" href="/css/preloader.css" />';
+const MAIN_CSS_LINK = '<link rel="stylesheet" href="/css/main.css" />';
+// Classic no-FOUC toggle: CSS gates the section fade-in behind html.js, so
+// a no-JS visitor (where this never runs) just sees every section visible.
+const CHARSET_META = '<meta charset="utf-8" />';
+const JS_CLASS_SCRIPT = '<script>document.documentElement.classList.add("js")</script>';
+
 const pageFiles = walk(PAGES).filter((f) => extname(f) === '.html');
 const builtPages = [];
 
 for (const file of pageFiles) {
   const relPath = relative(PAGES, file);
   const src = readFileSync(file, 'utf8');
-  const html = renderString(src, [rootContext]);
+  let html = renderString(src, [rootContext]);
+  html = html.replace(CHARSET_META, `${CHARSET_META}\n${JS_CLASS_SCRIPT}`);
+  html = html.replace(MAIN_CSS_LINK, `${PRELOADER_CSS_LINK}\n${MAIN_CSS_LINK}`);
+  html = html.replace('<body>', `<body>\n${preloaderHtml}`);
   const outRel = outputPathFor(relPath);
   const outFull = join(DIST, outRel);
   mkdirSync(dirname(outFull), { recursive: true });
@@ -181,7 +197,19 @@ const cssBundle = CSS_ORDER
   .join('\n\n');
 writeFileSync(join(DIST, 'css', 'main.css'), cssBundle);
 
-copyDir(join(SRC, 'js'), join(DIST, 'js'));
+// Preloader CSS ships separately (render-blocking, kept tiny on purpose —
+// see src/css/preloader.css) rather than folded into the main bundle.
+copyFileSync(join(SRC, 'css', 'preloader.css'), join(DIST, 'css', 'preloader.css'));
+
+// JS is minified at build time to stay under the 10KB budget — the
+// source stays readable/commented, only dist/ ships compressed.
+mkdirSync(join(DIST, 'js'), { recursive: true });
+for (const file of readdirSync(join(SRC, 'js'))) {
+  if (!file.endsWith('.js')) continue;
+  const raw = readFileSync(join(SRC, 'js', file), 'utf8');
+  const result = await minify(raw, { mangle: true, compress: true });
+  writeFileSync(join(DIST, 'js', file), result.code);
+}
 copyDir(join(SRC, 'fonts'), join(DIST, 'fonts'));
 copyDir(join(SRC, 'images'), join(DIST, 'images'));
 

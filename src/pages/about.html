@@ -10,8 +10,9 @@
 <meta property="og:title" content="About Us | JB Powercon Pvt. Ltd." />
 <meta property="og:description" content="ISO-certified manufacturer of power cables and conductors based in Chamrail, Howrah, West Bengal." />
 <meta property="og:url" content="{{site.SITE_URL}}/about/" />
-<meta property="og:image" content="{{site.SITE_URL}}/images/og-default.svg" />
-<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+<meta property="og:image" content="{{site.SITE_URL}}/images/factory/hero.webp" />
+<link rel="icon" type="image/png" href="/images/favicon-32.png" />
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 <link rel="stylesheet" href="/css/main.css" />
 {{> partials/jsonld-org.html}}
 <script type="application/ld+json">
@@ -54,35 +55,33 @@
 
   <section class="section container" data-reveal-group>
     <div class="grid-12">
-      <div style="grid-column:span 4" class="reveal">
+      <div class="reveal col-4">
         <h2><span class="section-number">01</span>Our mission</h2>
-        <p style="margin-top:var(--space-2);color:var(--text-muted)">{{data.company.about.mission}}</p>
+        <p style="margin-top:var(--space-2);color:var(--muted)">{{data.company.about.mission}}</p>
       </div>
-      <div style="grid-column:span 4" class="reveal">
+      <div class="reveal col-4">
         <h2><span class="section-number">02</span>Our vision</h2>
-        <p style="margin-top:var(--space-2);color:var(--text-muted)">{{data.company.about.vision}}</p>
+        <p style="margin-top:var(--space-2);color:var(--muted)">{{data.company.about.vision}}</p>
       </div>
-      <div style="grid-column:span 4" class="reveal">
+      <div class="reveal col-4">
         <h2><span class="section-number">03</span>Our history</h2>
-        <p style="margin-top:var(--space-2);color:var(--text-muted)">{{data.company.about.history}}</p>
+        <p style="margin-top:var(--space-2);color:var(--muted)">{{data.company.about.history}}</p>
       </div>
     </div>
   </section>
-
-  <hr class="rule container" />
 
   <section class="section container" data-reveal-group>
     <div class="section-head">
       <h2 class="reveal"><span class="section-number">04</span>Certified quality</h2>
     </div>
     <div class="grid-12">
-      <div style="grid-column:span 6" class="reveal">
+      <div class="reveal col-6">
         <div class="badge-row">
           {{#each data.company.certifications}}
           <span class="badge"><strong>{{name}}</strong> — {{scope}} ({{certNumber}})</span>
           {{/each}}
         </div>
-        <p style="margin-top:var(--space-3);color:var(--text-muted)">Certified by {{data.company.certificationBody}} on {{data.company.certificationDate}}, valid until {{data.company.certificationValidUntil}}, for the manufacture and supply of bare &amp; insulated covered conductors and cables.</p>
+        <p style="margin-top:var(--space-3);color:var(--muted)">Certified by {{data.company.certificationBody}} on {{data.company.certificationDate}}, valid until {{data.company.certificationValidUntil}}, for the manufacture and supply of bare &amp; insulated covered conductors and cables.</p>
         <dl style="margin-top:var(--space-3);display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2)">
           <div>
             <dt class="label">GSTIN</dt>
@@ -90,20 +89,18 @@
           </div>
           <div>
             <dt class="label">Udyam Registration</dt>
-            <dd style="margin:0;color:var(--accent-dark)">{{data.company.udyam.numberPerCertificate}} <span class="label" style="display:block;color:var(--text-muted)">(company text page prints {{data.company.udyam.numberPerCompanyText}} — TODO, confirm with client)</span></dd>
+            <dd style="margin:0;color:var(--accent-dark)">{{data.company.udyam.numberPerCertificate}} <span class="label" style="display:block;color:var(--muted)">(company text page prints {{data.company.udyam.numberPerCompanyText}} — TODO, confirm with client)</span></dd>
           </div>
         </dl>
       </div>
-      <div style="grid-column:span 6" class="reveal">
+      <div class="reveal col-6">
         <img src="/images/factory/certificates.webp" alt="ISO 9001:2015 and ISO 14001:2015 management system certificates issued to JB Powercon by Royal Assessments Pvt. Ltd." width="975" height="680" loading="lazy" style="border-radius:var(--radius-lg)" />
       </div>
     </div>
   </section>
 
-  <hr class="rule container" />
-
   <section class="section--tight container">
-    <div class="card" style="background:var(--accent-tint);border-color:var(--accent);display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;justify-content:space-between">
+    <div class="cta-band">
       <h2 style="font-size:var(--fs-h3);max-width:32ch">Want to see the full product range?</h2>
       <a class="btn btn--primary" href="/products/">View Products</a>
     </div>

@@ -1,13 +1,11 @@
-<div class="loader" data-loader aria-hidden="true">
-  <p class="loader__word">JB POWERCON</p>
-  <div class="loader__bar"><span></span></div>
-</div>
-
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
   <div class="container site-header__bar">
-    <a class="wordmark" href="{{site.SITE_URL}}/" style="animation-delay:0ms">JB <span>POWERCON</span></a>
+    <a class="logo-link" href="/" aria-label="{{site.LEGAL_NAME}} — home">
+      <img class="logo-link__icon" src="/images/logo-icon-reversed.webp" alt="" width="320" height="176" fetchpriority="high" />
+      <span class="logo-link__text">JB<span>POWERCON</span></span>
+    </a>
 
     <nav class="main-nav" aria-label="Primary">
       <ul class="main-nav__list">
@@ -33,7 +31,10 @@
 
 <dialog id="mobile-nav" class="mobile-nav" aria-label="Site navigation">
   <div class="mobile-nav__bar">
-    <span class="wordmark">JB <span>POWERCON</span></span>
+    <span class="logo-link">
+      <img class="logo-link__icon" src="/images/logo-icon.webp" alt="" width="320" height="176" />
+      <span class="logo-link__text logo-link__text--ink">JB<span>POWERCON</span></span>
+    </span>
     <button class="mobile-nav__close" type="button" data-menu-close>
       <span class="visually-hidden">Close menu</span>
       <span aria-hidden="true">&times;</span>

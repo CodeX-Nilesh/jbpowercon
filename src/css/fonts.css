@@ -1,43 +1,39 @@
 /* Self-hosted fonts. Files live in /src/fonts and are copied to /dist/fonts.
-   Sreda is now supplied (src/fonts/sreda-400.woff2) — Regular weight only,
-   licence still unverified, so keep self-hosted rather than linking out.
-   No bold Sreda file exists yet; browsers synthesise bold from the Regular
-   face when font-weight:700 is requested on "Sreda", which is acceptable
-   for a display typeface used mostly at large sizes. */
+   Space Grotesk (display) + Inter (body) — both self-hosted variable woff2,
+   latin subset, sourced from Google Fonts (OFL licensed). Metric-matched
+   fallback faces (local system sans resized to each font's own metrics)
+   keep layout shift near zero while the real font swaps in. */
 
 @font-face {
-  font-family: "Sreda";
-  src: url("../fonts/sreda-400.woff2") format("woff2");
-  font-weight: 400;
+  font-family: "Space Grotesk";
+  src: url("../fonts/space-grotesk-variable.woff2") format("woff2-variations");
+  font-weight: 300 700;
   font-style: normal;
   font-display: swap;
 }
 
-/* Metric-matched fallback: a local system font resized/repositioned to
-   Sreda's own vertical metrics (unitsPerEm 1000, ascent 750, descent -250,
-   cap-height 700), so the layout barely shifts when Sreda swaps in. */
 @font-face {
-  font-family: "Sreda Fallback";
+  font-family: "Space Grotesk Fallback";
   src: local("Arial"), local("Helvetica"), local("Arial Nova");
-  ascent-override: 75%;
-  descent-override: 25%;
+  ascent-override: 98%;
+  descent-override: 29%;
   line-gap-override: 0%;
-  size-adjust: 101%;
+  size-adjust: 98%;
 }
 
 @font-face {
   font-family: "Inter";
   src: url("../fonts/inter-variable.woff2") format("woff2-variations");
-  font-weight: 300 800;
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
-  size-adjust: 100%;
-  ascent-override: 90%;
-  descent-override: 22%;
 }
 
-@supports (font-variation-settings: normal) {
-  :root {
-    --font-body: "Inter var", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  }
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Arial"), local("Helvetica"), local("Arial Nova");
+  ascent-override: 97%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+  size-adjust: 102%;
 }
