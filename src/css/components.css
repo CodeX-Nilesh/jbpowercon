@@ -322,6 +322,14 @@ button.product-card:focus-visible {
   max-width: 16ch;
 }
 
+.hero__tagline {
+  margin-top: var(--space-2);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--accent-safe);
+}
+
 .hero__lede {
   margin-top: var(--space-3);
   font-size: 1.125rem;
@@ -347,6 +355,35 @@ button.product-card:focus-visible {
   object-fit: cover;
 }
 
+.feature-list {
+  margin-top: var(--space-4);
+  display: grid;
+  gap: var(--space-3);
+  list-style: disc;
+  padding-inline-start: 1.25em;
+}
+
+@media (min-width: 640px) {
+  .feature-list {
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-5);
+  }
+}
+
+.feature-list li {
+  padding-left: var(--space-1);
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.feature-list li::marker {
+  color: var(--accent-safe);
+}
+
+.feature-list li strong {
+  color: var(--fg);
+}
+
 /* ---------- Page-intro entrance (runs once on load, not scroll-triggered) ---------- */
 
 @keyframes fade-in-up {
@@ -362,9 +399,10 @@ button.product-card:focus-visible {
 
 .hero__eyebrow,
 .hero__title,
+.hero__tagline,
 .hero__lede,
 .hero__actions,
-.section--tight > h1 {
+.section--tight .container > h1 {
   animation: fade-in-up 700ms var(--ease-out) both;
 }
 
@@ -373,16 +411,20 @@ button.product-card:focus-visible {
 }
 
 .hero__title,
-.section--tight > h1 {
+.section--tight .container > h1 {
   animation-delay: 90ms;
 }
 
+.hero__tagline {
+  animation-delay: 150ms;
+}
+
 .hero__lede {
-  animation-delay: 180ms;
+  animation-delay: 210ms;
 }
 
 .hero__actions {
-  animation-delay: 270ms;
+  animation-delay: 300ms;
 }
 
 /* Deliberately NO entrance animation on .hero__media — it holds the LCP
@@ -539,7 +581,8 @@ html.js main > section:not(.hero).in-view {
   padding-left: 0;
 }
 
-.org-chart .org-node {
+.org-chart .org-node,
+.org-director {
   display: inline-block;
   border: 1px solid var(--line);
   background: var(--bg);
@@ -548,13 +591,217 @@ html.js main > section:not(.hero).in-view {
   font-size: 0.875rem;
   font-weight: 600;
   white-space: nowrap;
+  font-family: inherit;
+  text-align: center;
 }
 
-.org-chart .org-node small {
+.org-chart .org-node small,
+.org-director small {
   display: block;
   font-weight: 400;
   color: var(--muted);
   font-size: var(--fs-caption);
+}
+
+/* ---------- Org chart: interactive box (hover/focus lift + popover) ---------- */
+
+/* The lift effect below deliberately animates `top` (not `transform`) —
+   a `transform` on this element would make it a new containing block for
+   its position:fixed popover child, breaking the popover's viewport-
+   relative positioning (see .org-popover). */
+[data-org-box] {
+  position: relative;
+  top: 0;
+  cursor: pointer;
+  transition: top var(--duration) var(--ease-out), box-shadow var(--duration) var(--ease-out), border-color var(--duration) var(--ease-out);
+}
+
+[data-org-box]::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: var(--radius) var(--radius) 0 0;
+  transform: scaleX(0);
+  transition: transform var(--duration) var(--ease-out);
+}
+
+[data-org-box]:hover,
+[data-org-box]:focus-visible,
+[data-org-box].is-open {
+  top: -2px;
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent-safe);
+  z-index: 10;
+}
+
+[data-org-box]:hover::before,
+[data-org-box]:focus-visible::before,
+[data-org-box].is-open::before {
+  transform: scaleX(1);
+}
+
+[data-org-box]:focus-visible {
+  outline: 2px solid var(--accent-safe);
+  outline-offset: 3px;
+}
+
+/* ---------- Org chart: hover/focus popover card ---------- */
+
+/* position: fixed (not absolute) is deliberate — .org-chart-wrap needs
+   overflow-x: auto to contain the tree's horizontal scroll (see task 2,
+   no page-level horizontal scroll), and once one overflow axis on an
+   ancestor is non-visible the UA computes the other axis as non-visible
+   too, which would clip an absolutely-positioned popover that pokes
+   above/below it. Fixed position escapes that clipping; JS computes its
+   left/top in viewport coordinates and keeps it off-screen-safe. */
+.org-popover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  max-width: calc(100vw - 32px);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-hover);
+  padding: var(--space-2);
+  text-align: left;
+  white-space: normal;
+  font-weight: 400;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 500;
+  transform: translateY(6px);
+  transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out), visibility 0s linear 200ms;
+}
+
+.org-popover.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out);
+}
+
+.org-popover--flip-up {
+  transform: translateY(-6px);
+}
+
+.org-popover--flip-up.is-open {
+  transform: translateY(0);
+}
+
+.org-popover__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius);
+  margin-bottom: var(--space-2);
+}
+
+.org-popover__title {
+  display: block;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--fg);
+}
+
+.org-popover__desc {
+  display: block;
+  margin-top: var(--space-1);
+  font-weight: 400;
+  font-size: var(--fs-caption);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .org-popover,
+  .org-popover.is-open,
+  .org-popover--flip-up,
+  .org-popover--flip-up.is-open {
+    transition: opacity 1ms linear, visibility 0s linear;
+    transform: none;
+  }
+}
+
+/* ---------- Org chart: Directors tier + connector to General Manager ---------- */
+
+.org-chart-wrap {
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+}
+
+/* Mobile: directors stack flush-left, same as the GM/manager tree below
+   them (the mobile .org-chart li pattern is a left-indented list, not a
+   centered one) — so their connector sits at the same left edge instead
+   of drifting to a centered stem that wouldn't line up with the tree. */
+.org-directors {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding-bottom: var(--space-4);
+}
+
+.org-directors::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: var(--space-4);
+  border-left: 1px solid var(--line);
+}
+
+@media (min-width: 720px) {
+  .org-directors {
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: var(--space-6);
+    padding-bottom: calc(var(--space-4) * 2);
+  }
+
+  .org-director {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .org-director::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 0;
+    height: var(--space-4);
+    border-left: 1px solid var(--line);
+  }
+
+  .org-directors::before {
+    content: "";
+    position: absolute;
+    bottom: var(--space-4);
+    left: calc(50% - (200px + var(--space-6)) / 2);
+    width: calc(200px + var(--space-6));
+    height: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  /* desktop's org-chart tree is centered (justify-content: center), so
+     the final stem down to the General Manager box re-centers here too */
+  .org-directors::after {
+    left: 50%;
+  }
 }
 
 @media (min-width: 720px) {

@@ -57,9 +57,10 @@
 
 /* ---------- Alternating section theme ----------
    Every even top-level <section> (hero = 1st, so 2nd/4th/6th… alternate)
-   flips to the graphite palette. Components read --bg/--fg/--muted/--line
-   instead of the raw tokens, so cards, tables, forms, buttons, the org
-   chart and accordions all adapt without per-component dark-mode rules. */
+   flips to the graphite palette; every odd one (hero included) paints
+   beige. Components read --bg/--fg/--muted/--line instead of the raw
+   tokens, so cards, tables, forms, buttons, the org chart and accordions
+   all adapt without per-component rules for either case. */
 main > section:nth-of-type(even) {
   --bg: var(--ink);
   --fg: var(--text-on-ink);
@@ -67,6 +68,20 @@ main > section:nth-of-type(even) {
   --line: var(--border-on-ink);
   --accent-safe: var(--accent);
   background: var(--bg);
+  color: var(--fg);
+}
+
+main > section:nth-of-type(odd) {
+  /* The section itself paints the plain beige; --bg is deliberately the
+     *deeper* tint so children (.card, table, input, .org-node, …) read
+     as distinct from the section backdrop via both a hairline border and
+     a visible tint, not white, matching the graphite side's "card border
+     only" look with a beige-appropriate adjustment. */
+  --bg: var(--beige-deep);
+  --fg: var(--text);
+  --muted: var(--text-muted);
+  --line: var(--border-hairline);
+  background: var(--beige);
   color: var(--fg);
 }
 
@@ -119,37 +134,35 @@ main > section:nth-of-type(even) {
   gap: var(--space-3);
 }
 
-/* ---------- Logo lockup (icon image + live wordmark text) ---------- */
+/* ---------- Logo ----------
+   One unaltered raster logo (see tools/logo.py) — the artwork already
+   carries "JB POWERCON WIRES & CABLES" and the tagline, so this is never
+   paired with separate live-text. On a graphite/ink-deep background the
+   navy lettering has no contrast, so it sits on a small beige plate; on
+   a light background (e.g. the white mobile-nav dialog) it can sit
+   directly — see markup in header.html/footer.html. */
 
 .logo-link {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-1);
   white-space: nowrap;
   opacity: 0;
   transform: translateY(-6px);
   animation: header-fade-in var(--duration-slow) var(--ease-out) forwards;
 }
 
-.logo-link__icon {
-  width: 34px;
-  height: auto;
+.logo-plate {
+  display: inline-flex;
+  align-items: center;
+  background: var(--beige);
+  border-radius: var(--radius);
+  padding: 6px 10px;
 }
 
-.logo-link__text {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.125rem;
-  letter-spacing: var(--tracking-tight);
-  color: var(--fg);
-}
-
-.logo-link__text--ink {
-  color: var(--ink);
-}
-
-.logo-link__text span {
-  color: var(--accent-safe);
+.logo-plate img {
+  display: block;
+  height: 48px;
+  width: auto;
 }
 
 .main-nav {
@@ -408,12 +421,8 @@ main > section:nth-of-type(even) {
   animation: none;
 }
 
-.logo-link__text--lg {
-  font-size: 1.5rem;
-}
-
-.logo-link--footer .logo-link__icon {
-  width: 44px;
+.logo-plate--footer img {
+  height: 64px;
 }
 
 .site-footer__tagline {

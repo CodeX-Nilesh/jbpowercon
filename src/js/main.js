@@ -215,6 +215,111 @@
     }
   }
 
+  // ---- Org chart popovers ----
+  // Hover/focus (mouse + keyboard) shows the card; a coarse pointer (touch)
+  // gets tap-to-toggle instead, since it has no hover. Esc and an outside
+  // tap close it. IDs are assigned here at runtime (the build's template
+  // engine has no per-node counter) so aria-describedby stays unique even
+  // through the recursive partial that repeats the same markup shape.
+  var orgBoxes = document.querySelectorAll("[data-org-box]");
+  if (orgBoxes.length) {
+    var isCoarsePointer = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+    var openOrgBox = null;
+    var orgPopIdCounter = 0;
+
+    var closeOrgPopover = function (box) {
+      var pop = box.querySelector("[data-org-popover]");
+      if (pop) pop.classList.remove("is-open");
+      box.classList.remove("is-open");
+      if (openOrgBox === box) openOrgBox = null;
+    };
+
+    var positionOrgPopover = function (box, pop) {
+      pop.classList.remove("org-popover--flip-up");
+      var margin = 16;
+      var boxRect = box.getBoundingClientRect();
+      var popRect = pop.getBoundingClientRect();
+      var left = boxRect.left + boxRect.width / 2 - popRect.width / 2;
+      left = Math.max(margin, Math.min(left, window.innerWidth - popRect.width - margin));
+      var top = boxRect.bottom + 8;
+      if (top + popRect.height > window.innerHeight - margin) {
+        top = boxRect.top - popRect.height - 8;
+        pop.classList.add("org-popover--flip-up");
+      }
+      pop.style.left = left + "px";
+      pop.style.top = top + "px";
+    };
+
+    var openOrgPopover = function (box) {
+      if (openOrgBox && openOrgBox !== box) closeOrgPopover(openOrgBox);
+      var pop = box.querySelector("[data-org-popover]");
+      if (!pop) return;
+      box.classList.add("is-open");
+      pop.classList.add("is-open");
+      openOrgBox = box;
+      positionOrgPopover(box, pop);
+    };
+
+    orgBoxes.forEach(function (box) {
+      var pop = box.querySelector("[data-org-popover]");
+      if (pop) {
+        orgPopIdCounter++;
+        var id = "org-pop-" + orgPopIdCounter;
+        pop.id = id;
+        box.setAttribute("aria-describedby", id);
+      }
+
+      box.addEventListener("focus", function () {
+        openOrgPopover(box);
+      });
+      box.addEventListener("blur", function () {
+        closeOrgPopover(box);
+      });
+
+      if (isCoarsePointer) {
+        box.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (box.classList.contains("is-open")) closeOrgPopover(box);
+          else openOrgPopover(box);
+        });
+      } else {
+        box.addEventListener("mouseenter", function () {
+          openOrgPopover(box);
+        });
+        box.addEventListener("mouseleave", function () {
+          closeOrgPopover(box);
+        });
+      }
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && openOrgBox) {
+        var box = openOrgBox;
+        closeOrgPopover(box);
+        box.blur();
+      }
+    });
+
+    document.addEventListener(
+      "click",
+      function (e) {
+        if (openOrgBox && !openOrgBox.contains(e.target)) closeOrgPopover(openOrgBox);
+      },
+      true
+    );
+
+    // Fixed-position popover coordinates are computed once on open; rather
+    // than re-track them through every scroll (page scroll, or the org
+    // chart's own horizontal scroll container), just close on any scroll.
+    window.addEventListener(
+      "scroll",
+      function () {
+        if (openOrgBox) closeOrgPopover(openOrgBox);
+      },
+      { passive: true, capture: true }
+    );
+  }
+
   // ---- WhatsApp enquiry form ----
   var waForm = document.getElementById("whatsapp-form");
   if (waForm) {

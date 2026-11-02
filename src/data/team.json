@@ -1,6 +1,6 @@
 {
   "placeholder": false,
-  "_todo": "Director names and bios are transcribed from the brochure (pages 5-7). The org chart's tier titles and reporting structure are confirmed exactly against the brochure's own org chart image (page 8). Only the individual role-holders below the two Directors (Production Manager, Quality Manager, Marketing Manager, Chartered Accountant, Production/Quality Incharge, Market Executive, Accounts Manager, Shift Supervisors x2, Accounts Executive) are not named in the brochure — still TODO pending client input.",
+  "_todo": "Director names and bios are transcribed from the brochure (pages 5-7); their org-chart hover-card descriptions are condensed from those same bios. The org chart's tier titles and reporting structure (Directors -> General Manager -> Production/Quality/Marketing Manager + Chartered Accountant -> Incharges/Executives -> Shift Supervisors/Accounts Executive) follow the client's written revision. Individual role-holder names below General Manager are still TODO pending client input, and every role-holder description below the Directors is a generic placeholder (orgChart.*.placeholder: true) pending real bios — swap in real copy before launch.",
   "leadership": [
     {
       "name": "Mr. Adesh Jain",
@@ -18,19 +18,46 @@
     }
   ],
   "orgChart": {
-    "title": "Directors",
-    "name": "Mr. Adesh Jain & Mr. Sumeet Kr Bansal",
+    "directors": [
+      {
+        "name": "Mr. Adesh Jain",
+        "title": "Director",
+        "description": "Three decades in industrial and trading sectors, including running complete iron and steel factory setups, now applied to cable and conductor manufacturing.",
+        "image": "/images/team/org-avatar-placeholder.svg",
+        "placeholder": false
+      },
+      {
+        "name": "Mr. Sumeet Kr Bansal",
+        "title": "Director",
+        "description": "25 years of entrepreneurial experience in trading and manufacturing, with a background in sales, procurement and human resource management.",
+        "image": "/images/team/org-avatar-placeholder.svg",
+        "placeholder": false
+      }
+    ],
+    "generalManager": {
+      "title": "General Manager",
+      "name": "TODO",
+      "description": "Oversees day-to-day plant operations, coordinating the production, quality, marketing and finance functions on behalf of the Directors.",
+      "image": "/images/team/org-avatar-placeholder.svg",
+      "placeholder": true
+    },
     "children": [
       {
         "title": "Production Manager",
         "name": "TODO",
+        "description": "Plans and supervises the manufacturing floor, scheduling production runs and overseeing output and throughput.",
+        "image": "/images/team/org-avatar-placeholder.svg",
+        "placeholder": true,
         "children": [
           {
             "title": "Production Incharge",
             "name": "TODO",
+            "description": "Manages shift operations on the production floor, keeping machinery, manpower and materials running to schedule.",
+            "image": "/images/team/org-avatar-placeholder.svg",
+            "placeholder": true,
             "children": [
-              { "title": "Shift Supervisor", "name": "TODO" },
-              { "title": "Shift Supervisor", "name": "TODO" }
+              { "title": "Shift Supervisor", "name": "TODO", "description": "Supervises a single production shift, overseeing line staff and reporting progress to the Production Incharge.", "image": "/images/team/org-avatar-placeholder.svg", "placeholder": true },
+              { "title": "Shift Supervisor", "name": "TODO", "description": "Supervises a single production shift, overseeing line staff and reporting progress to the Production Incharge.", "image": "/images/team/org-avatar-placeholder.svg", "placeholder": true }
             ]
           }
         ]
@@ -38,26 +65,38 @@
       {
         "title": "Quality Manager",
         "name": "TODO",
+        "description": "Owns quality assurance across incoming materials, in-process checks and finished-goods testing against ISO standards.",
+        "image": "/images/team/org-avatar-placeholder.svg",
+        "placeholder": true,
         "children": [
-          { "title": "Quality Incharge", "name": "TODO" }
+          { "title": "Quality Incharge", "name": "TODO", "description": "Runs day-to-day quality inspections and testing on the production floor, reporting to the Quality Manager.", "image": "/images/team/org-avatar-placeholder.svg", "placeholder": true }
         ]
       },
       {
         "title": "Marketing Manager",
         "name": "TODO",
+        "description": "Leads sales and customer relationships, coordinating quotes, dispatches and new business development.",
+        "image": "/images/team/org-avatar-placeholder.svg",
+        "placeholder": true,
         "children": [
-          { "title": "Market Executive", "name": "TODO" }
+          { "title": "Market Executive", "name": "TODO", "description": "Handles client enquiries and field sales activity, reporting to the Marketing Manager.", "image": "/images/team/org-avatar-placeholder.svg", "placeholder": true }
         ]
       },
       {
         "title": "Chartered Accountant",
         "name": "TODO",
+        "description": "Oversees finance, statutory compliance and accounts for the company, reporting on financial performance to the Directors.",
+        "image": "/images/team/org-avatar-placeholder.svg",
+        "placeholder": true,
         "children": [
           {
             "title": "Accounts Manager",
             "name": "TODO",
+            "description": "Manages day-to-day accounting operations, book-keeping and vendor and customer ledgers.",
+            "image": "/images/team/org-avatar-placeholder.svg",
+            "placeholder": true,
             "children": [
-              { "title": "Accounts Executive", "name": "TODO" }
+              { "title": "Accounts Executive", "name": "TODO", "description": "Handles routine accounting entries, invoicing and reconciliation, reporting to the Accounts Manager.", "image": "/images/team/org-avatar-placeholder.svg", "placeholder": true }
             ]
           }
         ]

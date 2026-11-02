@@ -1,5 +1,12 @@
 <li>
-  <span class="org-node">{{title}}<small>{{name}}</small></span>
+  <button type="button" class="org-node" data-org-box>
+    {{title}}<small>{{name}}</small>
+    <span class="org-popover" data-org-popover role="tooltip">
+      <img class="org-popover__img" src="{{image}}" alt="Placeholder portrait for {{title}}" width="96" height="96" loading="lazy" decoding="async" />
+      <span class="org-popover__title">{{title}}</span>
+      <span class="org-popover__desc">{{description}}</span>
+    </span>
+  </button>
   {{#if children}}
   <ul>
     {{#each children}}

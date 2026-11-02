@@ -63,12 +63,15 @@
     </nav>
   </div>
 
-  <section class="section--tight container">
+  <section class="section--tight">
+  <div class="container">
     <p class="hero__eyebrow">Products</p>
     <h1 style="max-width:16ch">Cables and conductors, manufactured to IS standards.</h1>
-  </section>
+  </div>
+</section>
 
-  <section class="section container" data-reveal-group>
+  <section class="section" data-reveal-group>
+  <div class="container">
     <div class="grid-12">
       {{#each data.products.items}}
       <a class="product-card reveal col-4" href="/products/{{slug}}/">
@@ -83,9 +86,11 @@
       </a>
       {{/each}}
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section container" data-reveal-group>
+  <section class="section" data-reveal-group>
+  <div class="container">
     <div class="section-head">
       <h2 class="reveal"><span class="section-number">02</span>Frequently asked questions</h2>
     </div>
@@ -107,7 +112,8 @@
         <p style="margin-top:var(--space-2);color:var(--muted)">WhatsApp or call us with your product, size/spec and approximate quantity — see our <a href="/contact/" style="text-decoration:underline">Contact</a> page.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 </main>
 
 {{> partials/footer.html}}

@@ -1,77 +1,67 @@
 #!/usr/bin/env python3
-"""Dev-only tool: process src/source/logo-original.png into the transparent
-cutout logo assets shipped in src/images/. Not run as part of build.mjs and
-not part of the served site — run manually (`python tools/logo.py`)
-whenever the source artwork changes.
+"""Dev-only tool: process src/source/logo-original.png into the site's
+logo assets. Not run as part of build.mjs and not part of the served site
+— run manually (`python tools/logo.py`) whenever the source artwork
+changes.
 
-The source file already carries an alpha channel (a prior cutout pass), but
-with a visible speckle of faint low-alpha noise and soft/uneven edges. This
-script: suppresses that noise, erodes the alpha mask by ~1px to kill any
-colour halo at the edges, feathers it slightly for clean anti-aliasing, then
-crops out the icon mark and the icon+wordmark "lockup" (the tagline row is
-left off — it is rendered as live text in the footer instead), and derives
-a reversed (navy -> white, orange kept) variant of each for use on graphite
-backgrounds, plus a square favicon/apple-touch-icon source.
+Technique (per client instruction, 2026-11-02): true color-to-alpha
+(un-premultiply against a white matte), NOT a hard alpha threshold. The
+source file already carries a rough alpha channel from an earlier pass,
+so we first flatten it onto solid white (recovering the plain white-bg
+image the client is looking at) and then run color-to-alpha against that
+known white background — the standard GIMP-style algorithm: for each
+channel, the "distance already diluted toward white" sets a per-channel
+alpha estimate; the channel most diluted (closest to white) wins as the
+pixel's true alpha, and the true (undiluted) color is solved back out
+and clamped. This recovers correct semi-transparent edge pixels at
+anti-aliased boundaries instead of leaving white fringes or hard-cut
+noise.
+
+The artwork itself (navy, orange, metallic strands, wordmark, tagline)
+is never redrawn, recolored, re-typed or cropped — only its background
+goes from white to transparent. The only crop this script performs is a
+square "mark" (JB + bolt only, no cable swoosh) used solely for the
+favicon / apple-touch-icon, which the client's instructions explicitly
+allow.
 """
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageFilter
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "src" / "source" / "logo-original.png"
 OUT = ROOT / "src" / "images"
 
-DARK_VALUE_THRESHOLD = 150  # any opaque pixel this dark (navy text, the
-# near-black "WIRES & CABLES" line) flips to white in the reversed variant;
-# the orange and metallic-grey strands are both much brighter than this so
-# they're untouched.
-ALPHA_NOISE_THRESHOLD = 20
-ERODE_PASSES = 1
-FEATHER_RADIUS = 0.6
-
-# Pixel boxes measured from the source artwork (1495x1052), (left, top, right, bottom)
-BOX_ICON = (227, 105, 1217, 660)
-BOX_LOCKUP = (78, 105, 1437, 885)
-# Just the bold "JB" lettermark + bolt, no cable swoosh — the swoosh is too
-# fine-detailed to read at 16-32px, so the favicon uses this tighter crop.
+# Square favicon/apple-touch-icon crop: JB + bolt only (no cable swoosh,
+# which disappears into noise at 16-32px). Measured against this source's
+# 1495x1052 pixel grid — re-measure if the source file is ever replaced.
 BOX_MARK = (610, 105, 1217, 660)
 
-
-def clean_alpha(im: Image.Image) -> Image.Image:
-    arr = np.array(im)
-    a = arr[:, :, 3]
-    a = np.where(a < ALPHA_NOISE_THRESHOLD, 0, a)
-    arr[:, :, 3] = a
-    return Image.fromarray(arr, "RGBA")
+# Display height range given by the client (44-56px on mobile). We export
+# 2x the top of that range so one raster covers both the mobile and the
+# slightly larger desktop header size crisply.
+DISPLAY_HEIGHT_CSS = 56
+EXPORT_SCALE = 2
 
 
-def erode_alpha(im: Image.Image, passes: int) -> Image.Image:
-    r, g, b, a = im.split()
-    for _ in range(passes):
-        a = a.filter(ImageFilter.MinFilter(3))
-    return Image.merge("RGBA", (r, g, b, a))
-
-
-def feather_alpha(im: Image.Image, radius: float) -> Image.Image:
-    r, g, b, a = im.split()
-    a = a.filter(ImageFilter.GaussianBlur(radius))
-    return Image.merge("RGBA", (r, g, b, a))
-
-
-def to_reversed(im: Image.Image) -> Image.Image:
-    """Any dark pixel (navy artwork, the near-black "WIRES & CABLES" line)
-    -> white. Orange and the bright metallic cable strands are untouched —
-    both have a max channel well above the darkness threshold."""
-    arr = np.array(im).astype(np.int32)
-    r, g, b = arr[:, :, 0], arr[:, :, 1], arr[:, :, 2]
-    value = np.maximum(np.maximum(r, g), b)
-    dark_mask = value < DARK_VALUE_THRESHOLD
-    out = arr.copy()
-    out[:, :, 0] = np.where(dark_mask, 255, r)
-    out[:, :, 1] = np.where(dark_mask, 255, g)
-    out[:, :, 2] = np.where(dark_mask, 255, b)
-    return Image.fromarray(np.clip(out, 0, 255).astype(np.uint8), "RGBA")
+def color_to_alpha_against_white(rgb: np.ndarray) -> np.ndarray:
+    """rgb: HxWx3 float array in 0..255, assumed composited on white.
+    Returns HxWx4 float array (0..255) with recovered straight alpha."""
+    rgb = rgb.astype(np.float64)
+    # Per-channel alpha estimate: how far this channel already is from
+    # white (255) relative to the full 0..255 range — a channel at 255
+    # contributes 0 "evidence" of foreground, a channel at 0 contributes
+    # full evidence (alpha=1 needed to explain a pure channel against a
+    # white background with ANY true color).
+    alpha_per_channel = 1.0 - (rgb / 255.0)
+    alpha = np.max(alpha_per_channel, axis=2, keepdims=True)
+    alpha_safe = np.clip(alpha, 1e-6, 1.0)
+    # Recover true (undiluted) color: observed = a*true + (1-a)*255
+    true_rgb = (rgb - (1 - alpha_safe) * 255.0) / alpha_safe
+    true_rgb = np.clip(true_rgb, 0, 255)
+    out = np.concatenate([true_rgb, alpha * 255.0], axis=2)
+    return out
 
 
 def trim(im: Image.Image) -> Image.Image:
@@ -79,61 +69,67 @@ def trim(im: Image.Image) -> Image.Image:
     return im.crop(bbox) if bbox else im
 
 
-def save(im: Image.Image, name: str, max_width: int | None = None) -> None:
-    path = OUT / name
-    if max_width and im.width > max_width:
-        ratio = max_width / im.width
-        im = im.resize((max_width, round(im.height * ratio)), Image.LANCZOS)
-    # Lossy at high quality: flat colour regions compress far smaller than
-    # lossless and still look crisp at the sizes these render at (header/
-    # footer logo, never full-bleed), which matters more for LCP/weight.
-    im.save(path, quality=92, method=6)
-    print(f"wrote {path.relative_to(ROOT)} {im.size} ({path.stat().st_size // 1024}KB)")
-
-
 def main() -> None:
     if not SRC.exists():
-        raise SystemExit(f"missing source file: {SRC}")
+        raise SystemExit(f"STOP: missing source file {SRC} — cannot proceed without it.")
 
-    base = Image.open(SRC).convert("RGBA")
-    base = clean_alpha(base)
-    base = erode_alpha(base, ERODE_PASSES)
-    base = feather_alpha(base, FEATHER_RADIUS)
+    raw = Image.open(SRC).convert("RGBA")
 
-    icon = trim(base.crop(BOX_ICON))
-    lockup = trim(base.crop(BOX_LOCKUP))
+    # Flatten onto solid white, recovering the plain white-background
+    # image the color-to-alpha algorithm expects as input.
+    white_bg = Image.new("RGBA", raw.size, (255, 255, 255, 255))
+    flattened = Image.alpha_composite(white_bg, raw).convert("RGB")
 
-    # Both ship at 2x the largest size they're ever displayed at (header/
-    # footer wordmark, never full-bleed) — generous for retina without
-    # shipping the full ~1300px source.
-    save(icon, "logo-icon.webp", max_width=320)
-    save(lockup, "logo-lockup.webp", max_width=560)
-    save(to_reversed(icon), "logo-icon-reversed.webp", max_width=320)
-    save(to_reversed(lockup), "logo-lockup-reversed.webp", max_width=560)
+    rgb_arr = np.array(flattened)
+    rgba_out = color_to_alpha_against_white(rgb_arr)
+    cutout = Image.fromarray(rgba_out.astype(np.uint8), "RGBA")
 
-    # Square favicon source: just the bold JB+bolt mark (no cable swoosh,
-    # which disappears into noise at 16-32px), padded to a square.
-    mark = trim(base.crop(BOX_MARK))
-    side = max(mark.size)
-    pad = 24  # a little breathing room so the glyph doesn't touch the edge
-    side += pad * 2
+    full = trim(cutout)
+    print(f"full logo (trimmed) size: {full.size}")
+
+    # ---- Primary logo: full lockup incl. tagline, never cropped ----
+    target_h = DISPLAY_HEIGHT_CSS * EXPORT_SCALE
+    if full.height < target_h:
+        print(f"WARNING: source height {full.height}px is smaller than the requested "
+              f"2x export height {target_h}px — exporting at native resolution instead "
+              f"of upscaling. Flag this to the client; a higher-res source may be needed.")
+        logo_2x = full
+    else:
+        ratio = target_h / full.height
+        logo_2x = full.resize((round(full.width * ratio), target_h), Image.LANCZOS)
+    logo_1x = logo_2x.resize((round(logo_2x.width / 2), round(logo_2x.height / 2)), Image.LANCZOS)
+
+    for im, suffix in [(logo_1x, ""), (logo_2x, "@2x")]:
+        for fmt, kwargs in [("webp", dict(quality=95)), ("png", dict())]:
+            path = OUT / f"logo{suffix}.{fmt}"
+            im.save(path, **kwargs)
+            print(f"wrote {path.relative_to(ROOT)} {im.size} ({path.stat().st_size // 1024}KB)")
+
+    # ---- Favicon / apple-touch-icon source: JB + bolt mark only ----
+    mark = trim(cutout.crop(BOX_MARK))
+    side = max(mark.size) + 48  # breathing room so the glyph doesn't touch the edge
     pad_w, pad_h = (side - mark.size[0]) // 2, (side - mark.size[1]) // 2
     square = Image.new("RGBA", (side, side), (0, 0, 0, 0))
     square.paste(mark, (pad_w, pad_h), mark)
     favicon_src = square.resize((512, 512), Image.LANCZOS)
 
-    # 32px favicon stays transparent (browsers composite it themselves).
     favicon_32 = favicon_src.resize((32, 32), Image.LANCZOS)
     favicon_32.save(OUT / "favicon-32.png")
     print(f"wrote {(OUT / 'favicon-32.png').relative_to(ROOT)} (32x32)")
 
-    # apple-touch-icon needs an opaque background — iOS fills transparent
-    # PNGs with black otherwise.
     touch_bg = Image.new("RGBA", favicon_src.size, (255, 255, 255, 255))
     touch_icon = Image.alpha_composite(touch_bg, favicon_src).convert("RGB")
     touch_icon = touch_icon.resize((180, 180), Image.LANCZOS)
     touch_icon.save(OUT / "apple-touch-icon.png")
     print(f"wrote {(OUT / 'apple-touch-icon.png').relative_to(ROOT)} (180x180)")
+
+    # ---- Diagnostic: composite on beige + graphite for halo inspection ----
+    diag_dir = OUT.parent / "source"
+    for bg_name, bg_color in [("beige", (245, 245, 220, 255)), ("graphite", (36, 40, 43, 255))]:
+        bg = Image.new("RGBA", logo_2x.size, bg_color)
+        comp = Image.alpha_composite(bg, logo_2x).convert("RGB")
+        comp.save(diag_dir / f"logo-check-on-{bg_name}.png")
+        print(f"wrote diagnostic {diag_dir.relative_to(ROOT) / f'logo-check-on-{bg_name}.png'}")
 
 
 if __name__ == "__main__":

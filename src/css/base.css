@@ -7,6 +7,10 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
+  /* Safety net only — the real fix is every full-bleed section owning its
+     own background with content in an inner .container (see layout.css);
+     this just catches anything that still manages to overflow. */
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -23,11 +23,13 @@
 
 <main id="main">
 
-  <section class="hero container">
+  <section class="hero">
+  <div class="container">
     <div class="hero__grid">
       <div>
         <p class="hero__eyebrow">ISO 9001:2015 &amp; ISO 14001:2015 Certified</p>
         <h1 class="hero__title">Where safety meets superior performance.</h1>
+        <p class="hero__tagline">Crafted With Precision, Powered By Vision</p>
         <p class="hero__lede">JB Powercon is a cable and conductor manufacturer in Howrah, West Bengal — LT power cables, LT AB cables and ACSR conductors, engineered to IS standards and backed by in-house testing.</p>
         <div class="hero__actions">
           <a class="btn btn--primary" href="https://wa.me/{{site.CONTACTS.0.whatsapp}}" target="_blank" rel="noopener">WhatsApp for a Quote</a>
@@ -38,28 +40,26 @@
         <img src="/images/factory/hero.webp" alt="JB Powercon manufacturing works at Chamrail, Howrah" width="1050" height="595" fetchpriority="high" />
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section container" data-reveal-group>
+  <section class="section" data-reveal-group>
+  <div class="container">
     <div class="section-head">
       <h2 class="reveal"><span class="section-number">01</span>Why JB Powercon</h2>
     </div>
-    <div class="stat-row reveal">
-      {{#each data.company.stats}}
-      <div class="stat-tile">
-        <p class="stat-tile__number">{{value}}</p>
-        <p class="stat-tile__label">{{label}}</p>
-      </div>
-      {{/each}}
-    </div>
-    <div class="badge-row reveal" style="margin-top:var(--space-4)">
-      {{#each data.company.certifications}}
-      <span class="badge"><strong>{{name}}</strong> — {{scope}}</span>
-      {{/each}}
-    </div>
-  </section>
+    <p class="reveal" style="max-width:62ch">When it comes to power transmission, there is zero room for compromise. At JBpowercon, we engineer cables and wires built for extreme safety, maximum conductivity, and long-term endurance.</p>
+    <ul class="feature-list reveal">
+      <li><strong>Genuine Raw Material:</strong> Built with high-conductivity aluminum to cut transmission losses.</li>
+      <li><strong>Built to Last:</strong> Tough, heat-resistant insulation designed to withstand heavy loads and harsh environments.</li>
+      <li><strong>Certified Quality:</strong> Every meter complies with strict ISO benchmarks.</li>
+      <li><strong>Trusted by Professionals:</strong> Engineered for electricians, architects, and large-scale infrastructure projects that demand reliability.</li>
+    </ul>
+  </div>
+</section>
 
-  <section class="section container" data-reveal-group>
+  <section class="section" data-reveal-group>
+  <div class="container">
     <div class="section-head">
       <h2 class="reveal"><span class="section-number">02</span>Products</h2>
       <a class="btn btn--outline reveal" href="/products/">All products</a>
@@ -78,9 +78,11 @@
       </a>
       {{/each}}
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section container" data-reveal-group>
+  <section class="section" data-reveal-group>
+  <div class="container">
     <div class="grid-12" style="align-items:center">
       <div class="reveal col-6">
         <h2><span class="section-number">03</span>About the works</h2>
@@ -91,9 +93,11 @@
         <img src="/images/factory/floor.webp" alt="Production floor at JB Powercon" width="1085" height="600" loading="lazy" style="border-radius:var(--radius-lg)" />
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section container" data-reveal-group>
+  <section class="section" data-reveal-group>
+  <div class="container">
     <div class="section-head">
       <h2 class="reveal"><span class="section-number">04</span>What customers say</h2>
     </div>
@@ -123,9 +127,11 @@
         <span class="marquee__toggle-play">Play</span>
       </button>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section--tight container">
+  <section class="section--tight">
+  <div class="container">
     <div class="cta-band">
       <h2 style="font-size:var(--fs-h3);max-width:32ch">Need a quote on power cables or conductors?</h2>
       <div style="display:flex;gap:var(--space-2);flex-wrap:wrap">
@@ -133,7 +139,8 @@
         <a class="btn btn--primary" href="/contact/">Enquire on WhatsApp</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 </main>
 

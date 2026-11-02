@@ -40,15 +40,18 @@
     </nav>
   </div>
 
-  <section class="section--tight container">
+  <section class="section--tight">
+  <div class="container">
     <p class="hero__eyebrow">Portfolio</p>
     <h1 style="max-width:16ch">Projects we've supplied.</h1>
     {{#if data.portfolio.placeholder}}
     <p class="label" style="margin-top:var(--space-2);color:var(--accent-dark)">Placeholder projects shown below — replace with real case studies before launch.</p>
     {{/if}}
-  </section>
+  </div>
+</section>
 
-  <section class="section container">
+  <section class="section">
+  <div class="container">
     <div class="portfolio-filters" role="group" aria-label="Filter projects by product" data-portfolio-filters>
       <button type="button" class="filter-btn is-active" data-filter="all">All</button>
       {{#each data.products.items}}
@@ -83,14 +86,17 @@
     </div>
 
     <p class="label" data-portfolio-empty hidden style="margin-top:var(--space-4)">No projects in this category yet.</p>
-  </section>
+  </div>
+</section>
 
-  <section class="section--tight container">
+  <section class="section--tight">
+  <div class="container">
     <div class="cta-band">
       <h2 style="font-size:var(--fs-h3);max-width:32ch">Planning a project? Let's talk supply.</h2>
       <a class="btn btn--primary" href="/contact/">Contact us</a>
     </div>
-  </section>
+  </div>
+</section>
 </main>
 
 <dialog id="portfolio-dialog" class="dialog-surface" aria-label="Project details">

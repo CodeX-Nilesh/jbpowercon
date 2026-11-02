@@ -40,12 +40,15 @@
     </nav>
   </div>
 
-  <section class="section--tight container">
+  <section class="section--tight">
+  <div class="container">
     <p class="hero__eyebrow">Our Team</p>
     <h1 style="max-width:16ch">The people running the works.</h1>
-  </section>
+  </div>
+</section>
 
-  <section class="section container" data-reveal-group>
+  <section class="section" data-reveal-group>
+  <div class="container">
     <div class="section-head">
       <h2 class="reveal"><span class="section-number">01</span>Leadership</h2>
     </div>
@@ -59,16 +62,37 @@
       </div>
       {{/each}}
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section container" data-reveal-group>
+  <section class="section" data-reveal-group>
+  <div class="container">
     <div class="section-head">
       <h2 class="reveal"><span class="section-number">02</span>Organisation</h2>
     </div>
-    <div class="reveal" style="overflow-x:auto;padding-bottom:var(--space-2)">
+    <div class="reveal org-chart-wrap">
+      <div class="org-directors" role="group" aria-label="Directors">
+        {{#each data.team.orgChart.directors}}
+        <button type="button" class="org-director" data-org-box>
+          {{name}}<small>{{title}}</small>
+          <span class="org-popover" data-org-popover role="tooltip">
+            <img class="org-popover__img" src="{{image}}" alt="Portrait placeholder for {{name}}" width="96" height="96" loading="lazy" decoding="async" />
+            <span class="org-popover__title">{{name}}</span>
+            <span class="org-popover__desc">{{description}}</span>
+          </span>
+        </button>
+        {{/each}}
+      </div>
       <ul class="org-chart">
         <li>
-          <span class="org-node">{{data.team.orgChart.title}}<small>{{data.team.orgChart.name}}</small></span>
+          <button type="button" class="org-node" data-org-box>
+            {{data.team.orgChart.generalManager.title}}<small>{{data.team.orgChart.generalManager.name}}</small>
+            <span class="org-popover" data-org-popover role="tooltip">
+              <img class="org-popover__img" src="{{data.team.orgChart.generalManager.image}}" alt="Placeholder portrait for General Manager" width="96" height="96" loading="lazy" decoding="async" />
+              <span class="org-popover__title">{{data.team.orgChart.generalManager.title}}</span>
+              <span class="org-popover__desc">{{data.team.orgChart.generalManager.description}}</span>
+            </span>
+          </button>
           <ul>
             {{#each data.team.orgChart.children}}
             {{> partials/org-node.html}}
@@ -77,8 +101,9 @@
         </li>
       </ul>
     </div>
-    <p class="label" style="margin-top:var(--space-3)">Titles and reporting lines are confirmed from the company brochure; individual role-holder names below the Directors are pending client confirmation — see TODO.md.</p>
-  </section>
+    <p class="label" style="margin-top:var(--space-3)">Titles and reporting lines follow the company's organisation chart; individual role-holder names below the Directors are pending client confirmation, and role descriptions below the Directors are generic placeholders — see TODO.md.</p>
+  </div>
+</section>
 </main>
 
 {{> partials/footer.html}}
