@@ -66,14 +66,14 @@
     </div>
     <div class="grid-12">
       {{#each data.products.items}}
-      <a class="product-card reveal col-4" href="/products/{{slug}}/">
+      <a class="product-card product-card--dark reveal col-4" href="/products/{{slug}}/">
         <div class="product-card__media">
           <img src="{{heroImage}}" alt="{{shortName}}" width="800" height="600" loading="lazy" />
         </div>
         <div class="product-card__body">
           <p class="product-card__eyebrow">{{category}}</p>
           <h3 class="product-card__title">{{shortName}}</h3>
-          <p style="margin-top:var(--space-1);color:var(--muted)">{{summary}}</p>
+          <p class="product-card__desc">{{summary}}</p>
         </div>
       </a>
       {{/each}}

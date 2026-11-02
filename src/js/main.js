@@ -380,4 +380,54 @@
       window.open(url, "_blank", "noopener");
     });
   }
+
+  // ---- Credentials lightbox ----
+  var credGrid = document.querySelector("[data-credentials-grid]");
+  var credLightbox = document.getElementById("credential-lightbox");
+  if (credGrid && credLightbox) {
+    var credCards = Array.prototype.slice.call(credGrid.querySelectorAll("[data-credential-item]"));
+    var credImage = credLightbox.querySelector("[data-lightbox-image]");
+    var credTitle = credLightbox.querySelector("[data-lightbox-title]");
+    var credDesc = credLightbox.querySelector("[data-lightbox-desc]");
+    var credIndex = 0;
+
+    function showCredential(i) {
+      credIndex = (i + credCards.length) % credCards.length;
+      var card = credCards[credIndex];
+      credImage.src = card.dataset.image || "";
+      credImage.alt = card.dataset.title || "";
+      credTitle.textContent = card.dataset.title || "";
+      credDesc.textContent = card.dataset.description || "";
+    }
+
+    credCards.forEach(function (card, i) {
+      card.addEventListener("click", function () {
+        showCredential(i);
+        if (typeof credLightbox.showModal === "function") credLightbox.showModal();
+      });
+    });
+
+    credLightbox.querySelectorAll("[data-lightbox-close]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        credLightbox.close();
+      });
+    });
+    credLightbox.querySelectorAll("[data-lightbox-prev]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        showCredential(credIndex - 1);
+      });
+    });
+    credLightbox.querySelectorAll("[data-lightbox-next]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        showCredential(credIndex + 1);
+      });
+    });
+    credLightbox.addEventListener("click", function (e) {
+      if (e.target === credLightbox) credLightbox.close();
+    });
+    credLightbox.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") showCredential(credIndex - 1);
+      if (e.key === "ArrowRight") showCredential(credIndex + 1);
+    });
+  }
 })();

@@ -172,6 +172,16 @@ button.btn:active {
     border-color var(--duration) var(--ease-out);
 }
 
+/* Product listing cards only (home "Products" + /products/) — always a
+   graphite-black card regardless of the section's own light/dark theme,
+   like .cta-band but inverted (always dark, not always light), so it
+   needs --text-on-ink explicitly, not --fg/--bg. The portfolio grid
+   reuses the base .product-card class and stays theme-adaptive. */
+.product-card--dark {
+  border-color: var(--border-on-ink);
+  background: var(--surface-ink);
+}
+
 a.product-card:hover,
 a.product-card:focus-visible,
 button.product-card:hover,
@@ -214,6 +224,19 @@ button.product-card:focus-visible {
   font-family: var(--font-display);
   font-size: 1.375rem;
   margin-top: var(--space-1);
+}
+
+.product-card--dark .product-card__title {
+  color: var(--text-on-ink);
+}
+
+.product-card__desc {
+  margin-top: var(--space-1);
+  color: var(--muted);
+}
+
+.product-card--dark .product-card__desc {
+  color: var(--text-on-ink);
 }
 
 /* ---------- Portfolio filters ---------- */
@@ -1221,6 +1244,192 @@ dialog {
 
 .dialog-surface__close:hover {
   background: var(--surface-alt);
+}
+
+/* ---------- Credentials grid ---------- */
+
+.credential-card {
+  display: block;
+  text-align: left;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg);
+  transition: transform var(--duration) var(--ease-out), box-shadow var(--duration) var(--ease-out),
+    border-color var(--duration) var(--ease-out);
+}
+
+.credential-card:hover,
+.credential-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.credential-card__media {
+  display: block;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--fg) 8%, var(--bg));
+}
+
+.credential-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.credential-card:hover .credential-card__media img,
+.credential-card:focus-visible .credential-card__media img {
+  transform: scale(1.06);
+}
+
+.credential-card__body {
+  display: block;
+  padding: var(--space-3);
+}
+
+.credential-card__title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  color: var(--fg);
+}
+
+.credential-card__desc {
+  display: block;
+  margin-top: var(--space-1);
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+/* ---------- Lightbox (certificate viewer) ---------- */
+
+.lightbox {
+  width: min(900px, 94vw);
+  max-height: 92vh;
+  border: 0;
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  background: var(--surface-ink);
+  color: var(--text-on-ink);
+  position: relative;
+}
+
+.lightbox::backdrop {
+  background: color-mix(in srgb, var(--ink) 70%, transparent);
+}
+
+.lightbox__frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 72vh;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.lightbox__frame img {
+  max-width: 100%;
+  max-height: 72vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius);
+  /* Soft deterrent only — browser devtools can still get at the image,
+     but this removes the obvious "right-click / drag to save" paths. */
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.lightbox__caption {
+  margin-top: var(--space-3);
+  text-align: center;
+}
+
+.lightbox__title {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+}
+
+.lightbox__desc {
+  margin-top: var(--space-1);
+  color: var(--text-on-ink-muted);
+  font-size: 0.9375rem;
+  max-width: 56ch;
+  margin-inline: auto;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--text-on-ink);
+  background: color-mix(in srgb, white 12%, var(--surface-ink));
+  z-index: 1;
+}
+
+.lightbox__close:hover,
+.lightbox__close:focus-visible {
+  background: color-mix(in srgb, white 22%, var(--surface-ink));
+}
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--text-on-ink);
+  background: color-mix(in srgb, white 12%, var(--surface-ink));
+  z-index: 1;
+}
+
+.lightbox__nav:hover,
+.lightbox__nav:focus-visible {
+  background: color-mix(in srgb, white 22%, var(--surface-ink));
+}
+
+.lightbox__nav--prev {
+  left: var(--space-2);
+}
+
+.lightbox__nav--next {
+  right: var(--space-2);
+}
+
+@media (max-width: 520px) {
+  .lightbox {
+    padding: var(--space-2);
+  }
+
+  .lightbox__nav,
+  .lightbox__close {
+    width: 38px;
+    height: 38px;
+  }
+
+  .lightbox__nav--prev {
+    left: var(--space-1);
+  }
+
+  .lightbox__nav--next {
+    right: var(--space-1);
+  }
 }
 
 /* Preloader now lives in its own render-blocking /css/preloader.css —
