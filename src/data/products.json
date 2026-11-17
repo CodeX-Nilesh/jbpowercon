@@ -1,34 +1,57 @@
 {
-  "_todo": "Descriptions, features, applications and standards below are transcribed from the brochure (JBPPL Profile.pdf, pages 16-19 / 'Product Details' and 'Approvals'). The brochure gives no numeric size/current-rating/breaking-load tables for any product, so spec.rows below remain placeholder pending that data. Standards are kept exactly as printed in the brochure, including its own odd renderings: 'IS 3G8 (Part-II)' is almost certainly 'IS 398 (Part 2)', and 'IS 70G8 (Part-I)' is almost certainly 'IS 7098 (Part 1)' — do not silently correct these without confirming with the client.",
   "items": [
     {
       "slug": "lt-power-cable",
-      "name": "LT Power Cable",
-      "shortName": "LT Power Cables",
+      "name": "LT Power Cable – XLPE Insulated",
+      "shortName": "LT Power Cable – XLPE Insulated",
       "category": "Power Cables",
       "heroImage": "/images/products/lt-power-cable-hero.webp",
-      "summary": "Low Tension (LT) power cables for voltages up to and including 1.1 kV, for power distribution in buildings, industries and infrastructure projects.",
-      "description": "LT power cables are used for low-voltage applications up to and including 1.1 kV: power distribution in buildings, industries and infrastructure projects, laid underground or run aerially.",
+      "summary": "Crosslinked Polyethylene (XLPE) insulated, thermoplastic sheathed LT power cable for voltages up to and including 1100 V.",
+      "description": "LT power cable, crosslinked polyethylene (XLPE) insulated and thermoplastic sheathed, for working voltages up to and including 1100 V, used in low-voltage and medium-voltage grids for commercial, industrial, residential and infrastructure projects.",
       "features": [
-        "Reliable power transmission",
-        "Safety and reduced risk of electrical hazards",
-        "Flexibility in installation",
-        "Manufactured under ISO 9001:2015 quality system"
+        "Preferred due to superior moisture resistance",
+        "High mechanical strength",
+        "Higher operating temperature",
+        "Reduces energy waste during high-voltage transmission"
       ],
       "applications": [
-        "Low-voltage applications up to and including 1.1 kV",
-        "Power distribution in buildings, industries and infrastructure projects",
-        "Underground or aerial installations"
+        "Low-voltage and medium-voltage grids for commercial buildings, industrial complexes, residential developments and infrastructure projects"
       ],
-      "standards": ["IS 70G8 (Part-I)"],
+      "standards": ["IS 7098 (Part 1):2025"],
       "specs": {
-        "placeholder": true,
-        "note": "Brochure gives no numeric size/current-rating table for this product — TODO: get one from the client.",
         "rows": [
-          { "parameter": "Voltage grade", "value": "Up to and including 1.1 kV" },
-          { "parameter": "Standard", "value": "IS 70G8 (Part-I) — Crosslinked Polyethylene Insulated, PVC Sheathed Cables, as printed in the brochure" },
-          { "parameter": "Conductor size range", "value": "TODO" },
-          { "parameter": "Core configuration", "value": "TODO" }
+          { "parameter": "Voltage grade", "value": "Up to and including 1100 V" },
+          { "parameter": "Standard", "value": "IS 7098 (Part 1):2025" },
+          { "parameter": "Conductor size range", "value": "1.5 to 1000 sqmm" },
+          { "parameter": "Insulation", "value": "Crosslinked Polyethylene (XLPE), thermoplastic sheathed" }
+        ]
+      }
+    },
+    {
+      "slug": "lt-power-cable-pvc",
+      "name": "LT Power Cable – PVC Insulated",
+      "shortName": "LT Power Cable – PVC Insulated",
+      "category": "Power Cables",
+      "heroImage": "/images/products/placeholder-black.webp",
+      "summary": "PVC insulated, PVC sheathed LT power cable for working voltages up to and including 1100 V.",
+      "description": "LT power cable, PVC insulated and PVC sheathed, for working voltages up to and including 1100 V, used for internal house wiring and general power distribution in offices, malls and public complexes.",
+      "features": [
+        "Cost-effective",
+        "Flexible and easy to install",
+        "Chemical and moisture resistance",
+        "Fire safety options"
+      ],
+      "applications": [
+        "Internal house wiring, lighting circuits, ceiling fans, plug sockets and household appliances",
+        "Offices, malls and public complexes for general power distribution, HVAC equipment and lighting via conduits, shafts and cable trays"
+      ],
+      "standards": ["IS 1554 (Part 1):1988"],
+      "specs": {
+        "rows": [
+          { "parameter": "Voltage grade", "value": "Up to and including 1100 V" },
+          { "parameter": "Standard", "value": "IS 1554 (Part 1):1988" },
+          { "parameter": "Conductor size range", "value": "1.5 to 630 sqmm" },
+          { "parameter": "Insulation", "value": "PVC insulated, PVC sheathed" }
         ]
       }
     },
@@ -38,28 +61,24 @@
       "shortName": "LT AB (Aerial Bunched) Cables",
       "category": "Aerial Bunched Cables",
       "heroImage": "/images/products/lt-ab-cable-hero.webp",
-      "summary": "Low Tension Aerial Bunched (AB) cable for overhead power distribution up to and including 1.1 kV, in residential and commercial areas.",
-      "description": "LT AB cable refers to Low Tension Aerial Bunched cable, used for overhead power distribution at low-voltage (up to and including 1.1 kV) in residential and commercial areas.",
+      "summary": "Low Tension Aerial Bunched (AB) cable for overhead power distribution up to and including 1100 V, in villages and remote communities.",
+      "description": "LT AB cable refers to Low Tension Aerial Bunched cable, used for low-voltage and medium-voltage overhead power distribution lines up to and including 1100 V, in villages and remote communities.",
       "features": [
-        "Improved safety due to insulated conductors",
-        "Reduced risk of faults and power theft",
-        "Aesthetically better than bare conductors",
-        "Manufactured under ISO 9001:2015 quality system"
+        "Enhanced safety",
+        "Lower maintenance",
+        "Improved reliability",
+        "Reduced unauthorized tapping and power theft",
+        "Aesthetically better than bare conductors"
       ],
       "applications": [
-        "Overhead power distribution",
-        "Low-voltage applications up to and including 1.1 kV",
-        "Residential and commercial areas"
+        "Low-voltage and medium-voltage overhead power distribution lines in villages and remote communities"
       ],
-      "standards": ["IS 14255"],
+      "standards": ["IS 14255:1995"],
       "specs": {
-        "placeholder": true,
-        "note": "Brochure gives no numeric conductor-size/messenger-rating table for this product — TODO: get one from the client.",
         "rows": [
-          { "parameter": "Voltage grade", "value": "Up to and including 1.1 kV" },
-          { "parameter": "Standard", "value": "IS 14255 — Aerial Bunched Cables" },
-          { "parameter": "Conductor size range", "value": "TODO" },
-          { "parameter": "Bunching", "value": "TODO (duplex / triplex / quadruplex — confirm range offered)" }
+          { "parameter": "Voltage grade", "value": "Up to and including 1100 V" },
+          { "parameter": "Standard", "value": "IS 14255:1995" },
+          { "parameter": "Conductor size range", "value": "16 to 95 sqmm" }
         ]
       }
     },
@@ -69,28 +88,78 @@
       "shortName": "ACSR Conductors",
       "category": "Conductors",
       "heroImage": "/images/products/acsr-conductor-hero.webp",
-      "summary": "Aluminium Conductor Steel Reinforced (ACSR) bare overhead conductors for power transmission lines.",
-      "description": "ACSR (Aluminium Conductor Steel Reinforced) conductor is a type of overhead power transmission line conductor, consisting of aluminium strands surrounding a steel core, offering excellent mechanical strength and electrical performance.",
+      "summary": "Aluminium Conductor Steel Reinforced (ACSR) bare overhead conductors for power transmission and distribution lines.",
+      "description": "ACSR (Aluminium Conductor Steel Reinforced) is an aluminium conductor for overhead transmission purposes, consisting of aluminium strands surrounding a steel core, offering excellent mechanical strength and electrical performance.",
       "features": [
-        "High strength-to-weight ratio",
-        "Good conductivity",
-        "Resistance to corrosion",
-        "Manufactured under ISO 9001:2015 quality system"
+        "Good electrical conductivity",
+        "Light weight",
+        "Can handle a fair amount of stress",
+        "Excellent mechanical strength",
+        "Reduced electromagnetic interference"
       ],
       "applications": [
-        "Overhead power transmission lines",
-        "Long spans and river/valley crossings",
-        "Rural electrification feeders"
+        "Widely used for overhead electrical power transmission and distribution lines"
       ],
-      "standards": ["IS 3G8 (Part-II)"],
+      "standards": ["IS 398 (Part 2):2025"],
       "specs": {
-        "placeholder": true,
-        "note": "Brochure gives no numeric codename/stranding/breaking-load table for this product — TODO: get one from the client.",
         "rows": [
           { "parameter": "Core", "value": "Galvanised steel wire, stranded" },
           { "parameter": "Outer strands", "value": "Aluminium, stranded" },
-          { "parameter": "Standard", "value": "IS 3G8 (Part-II) — Aluminium Conductors, Galvanized Steel-Reinforced, as printed in the brochure" },
-          { "parameter": "Common codenames", "value": "TODO (e.g. Dog, Weasel, Rabbit, Moose — confirm range offered)" }
+          { "parameter": "Standard", "value": "IS 398 (Part 2):2025" },
+          { "parameter": "Conductor size range", "value": "10 to 810 sqmm" }
+        ]
+      }
+    },
+    {
+      "slug": "aac-conductor",
+      "name": "AAC Conductor",
+      "shortName": "AAC Conductors",
+      "category": "Conductors",
+      "heroImage": "/images/products/placeholder-black.webp",
+      "summary": "All Aluminium Conductor (AAC) bare overhead conductor for short-span overhead power distribution.",
+      "description": "AAC (All Aluminium Conductor) is an aluminium conductor for overhead transmission purposes, used extensively for short-span overhead electrical power distribution lines in cities and towns where pole or support spacing is close.",
+      "features": [
+        "High conductivity",
+        "Works best for distribution lines in rural areas or temporary setups",
+        "Budget-friendly and easy to install",
+        "Provides good flexibility"
+      ],
+      "applications": [
+        "Short-span overhead electrical power distribution lines in cities and towns where pole or support spacing is close"
+      ],
+      "standards": ["IS 398 (Part 1):1996"],
+      "specs": {
+        "rows": [
+          { "parameter": "Core", "value": "All-aluminium stranded (no steel core)" },
+          { "parameter": "Standard", "value": "IS 398 (Part 1):1996" },
+          { "parameter": "Conductor size range", "value": "25 to 300 sqmm" }
+        ]
+      }
+    },
+    {
+      "slug": "pvc-wires-cords",
+      "name": "PVC Insulated Wires & Cords",
+      "shortName": "PVC Wires & Cords",
+      "category": "Wires & Cords",
+      "heroImage": "/images/products/placeholder-black.webp",
+      "summary": "PVC insulated, unsheathed and sheathed wires and cords with rigid or flexible copper/aluminium conductors, for rated voltages up to and including 450/750 V AC.",
+      "description": "PVC insulated, unsheathed and sheathed wires and cords, with rigid or flexible copper or aluminium conductors, for rated voltages up to and including 450/750 V AC, designed for internal house and building wiring, light and power installations, control signals, panel wiring and flexible cords.",
+      "features": [
+        "Optimized power transmission",
+        "High dielectric strength",
+        "High versatility",
+        "Environmental resistance"
+      ],
+      "applications": [
+        "Internal house and building wiring, light and power installations, control signals, panel wiring and flexible cords"
+      ],
+      "standards": ["IS 694:2010"],
+      "specs": {
+        "rows": [
+          { "parameter": "Voltage grade", "value": "Up to and including 450/750 V AC" },
+          { "parameter": "Standard", "value": "IS 694:2010" },
+          { "parameter": "Conductor size range", "value": "0.5 to 630 sqmm" },
+          { "parameter": "Conductor material", "value": "Rigid or flexible copper / aluminium" }
         ]
       }
     }

@@ -1,6 +1,4 @@
 {
-  "placeholder": true,
-  "_todo": "Entirely fake placeholder data — replace every entry with real project/client information before launch. Do not keep any of these names live. Brochure has no project/case-study section, so none of this is transcribed.",
   "items": [
     {
       "id": "proj-01",
@@ -10,8 +8,7 @@
       "product": "lt-ab-cable",
       "year": "2024",
       "summary": "Placeholder case study: supply of LT AB cable for an overhead distribution upgrade replacing bare conductor on a rural feeder.",
-      "image": "/images/portfolio/placeholder-1.svg",
-      "placeholder": true
+      "image": "/images/portfolio/placeholder-1.svg"
     },
     {
       "id": "proj-02",
@@ -21,8 +18,7 @@
       "product": "lt-power-cable",
       "year": "2024",
       "summary": "Placeholder case study: armoured LT power cable supplied for internal power distribution across an industrial park.",
-      "image": "/images/portfolio/placeholder-2.svg",
-      "placeholder": true
+      "image": "/images/portfolio/placeholder-2.svg"
     },
     {
       "id": "proj-03",
@@ -32,8 +28,7 @@
       "product": "acsr-conductor",
       "year": "2023",
       "summary": "Placeholder case study: ACSR conductor supplied for a multi-span overhead transmission line upgrade.",
-      "image": "/images/portfolio/placeholder-3.svg",
-      "placeholder": true
+      "image": "/images/portfolio/placeholder-3.svg"
     },
     {
       "id": "proj-04",
@@ -43,8 +38,7 @@
       "product": "lt-ab-cable",
       "year": "2023",
       "summary": "Placeholder case study: LT AB cable supplied for overhead service connections across a residential township.",
-      "image": "/images/portfolio/placeholder-4.svg",
-      "placeholder": true
+      "image": "/images/portfolio/placeholder-4.svg"
     },
     {
       "id": "proj-05",
@@ -54,8 +48,7 @@
       "product": "lt-power-cable",
       "year": "2023",
       "summary": "Placeholder case study: underground LT power cable supplied for a commercial complex's incoming feeders.",
-      "image": "/images/portfolio/placeholder-5.svg",
-      "placeholder": true
+      "image": "/images/portfolio/placeholder-5.svg"
     },
     {
       "id": "proj-06",
@@ -65,8 +58,7 @@
       "product": "acsr-conductor",
       "year": "2022",
       "summary": "Placeholder case study: ACSR conductor supplied for a long-span river crossing section of a distribution line.",
-      "image": "/images/portfolio/placeholder-6.svg",
-      "placeholder": true
+      "image": "/images/portfolio/placeholder-6.svg"
     },
     {
       "id": "proj-07",
@@ -76,8 +68,7 @@
       "product": "lt-ab-cable",
       "year": "2022",
       "summary": "Placeholder case study: LT AB cable supplied to replace ageing bare conductor on municipal street-lighting feeders.",
-      "image": "/images/portfolio/placeholder-7.svg",
-      "placeholder": true
+      "image": "/images/portfolio/placeholder-7.svg"
     },
     {
       "id": "proj-08",
@@ -87,8 +78,7 @@
       "product": "lt-power-cable",
       "year": "2022",
       "summary": "Placeholder case study: LT power cable supplied for the panel-to-switchgear wiring of a factory expansion project.",
-      "image": "/images/portfolio/placeholder-8.svg",
-      "placeholder": true
+      "image": "/images/portfolio/placeholder-8.svg"
     }
   ]
 }

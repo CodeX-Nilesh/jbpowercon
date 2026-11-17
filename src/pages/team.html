@@ -86,22 +86,34 @@
       <ul class="org-chart">
         <li>
           <button type="button" class="org-node" data-org-box>
-            {{data.team.orgChart.generalManager.title}}<small>{{data.team.orgChart.generalManager.name}}</small>
+            {{data.team.orgChart.ceo.title}}<small>{{data.team.orgChart.ceo.name}}</small>
             <span class="org-popover" data-org-popover role="tooltip">
-              <img class="org-popover__img" src="{{data.team.orgChart.generalManager.image}}" alt="Placeholder portrait for General Manager" width="96" height="96" loading="lazy" decoding="async" />
-              <span class="org-popover__title">{{data.team.orgChart.generalManager.title}}</span>
-              <span class="org-popover__desc">{{data.team.orgChart.generalManager.description}}</span>
+              <img class="org-popover__img" src="{{data.team.orgChart.ceo.image}}" alt="Portrait placeholder for {{data.team.orgChart.ceo.name}}" width="96" height="96" loading="lazy" decoding="async" />
+              <span class="org-popover__title">{{data.team.orgChart.ceo.title}}</span>
+              <span class="org-popover__desc">{{data.team.orgChart.ceo.description}}</span>
             </span>
           </button>
           <ul>
-            {{#each data.team.orgChart.children}}
-            {{> partials/org-node.html}}
-            {{/each}}
+            <li>
+              <button type="button" class="org-node" data-org-box>
+                {{data.team.orgChart.generalManager.title}}<small>{{data.team.orgChart.generalManager.name}}</small>
+                <span class="org-popover" data-org-popover role="tooltip">
+                  <img class="org-popover__img" src="{{data.team.orgChart.generalManager.image}}" alt="Portrait placeholder for {{data.team.orgChart.generalManager.name}}" width="96" height="96" loading="lazy" decoding="async" />
+                  <span class="org-popover__title">{{data.team.orgChart.generalManager.title}}</span>
+                  <span class="org-popover__desc">{{data.team.orgChart.generalManager.description}}</span>
+                </span>
+              </button>
+              <ul>
+                {{#each data.team.orgChart.children}}
+                {{> partials/org-node.html}}
+                {{/each}}
+              </ul>
+            </li>
           </ul>
         </li>
       </ul>
     </div>
-    <p class="label" style="margin-top:var(--space-3)">Titles and reporting lines follow the company's organisation chart; individual role-holder names below the Directors are pending client confirmation, and role descriptions below the Directors are generic placeholders — see TODO.md.</p>
+    <p class="label" style="margin-top:var(--space-3)">Titles and reporting lines follow the company's organisation chart.</p>
   </div>
 </section>
 </main>

@@ -53,7 +53,7 @@
     <div class="grid-12">
       <div class="col-7">
         <h2 style="font-size:var(--fs-h3)"><span class="section-number">01</span>Send an enquiry</h2>
-        <form id="whatsapp-form" style="margin-top:var(--space-4);max-width:560px" novalidate>
+        <form id="whatsapp-form" data-recipient="{{site.CONTACTS.0.whatsapp}}" style="margin-top:var(--space-4);max-width:560px" novalidate>
           <div class="field">
             <label for="f-name">Name</label>
             <input id="f-name" name="name" type="text" autocomplete="name" required />
@@ -85,17 +85,6 @@
             <label for="f-message">Anything else we should know?</label>
             <textarea id="f-message" name="message" placeholder="Size/spec, delivery location, timeline…"></textarea>
           </div>
-          <fieldset>
-            <legend>Send this enquiry to</legend>
-            <div class="radio-row">
-              {{#each site.CONTACTS}}
-              <label class="radio-option">
-                <input type="radio" name="recipient" value="{{whatsapp}}" />
-                {{name}} — {{phone}}
-              </label>
-              {{/each}}
-            </div>
-          </fieldset>
           <button type="submit" class="btn btn--primary">Send via WhatsApp</button>
           <p class="form-status" data-form-status role="status" aria-live="polite"></p>
         </form>
@@ -132,10 +121,18 @@
     <div class="section-head">
       <h2 class="reveal"><span class="section-number">03</span>Find us</h2>
     </div>
-    <a class="reveal map-link" href="{{site.GOOGLE_MAPS_URL}}" target="_blank" rel="noopener" aria-label="Open JB Powercon's location in Google Maps">
-      <img src="/images/factory/map.svg" alt="Map showing JB Powercon's works at NH-6, Bombay Road, Chamrail, Jaypur, Howrah 711114" width="1200" height="420" loading="lazy" />
-      <span class="map-link__badge">Open in Google Maps</span>
-    </a>
+    <div class="reveal map-embed">
+      <iframe
+        src="https://www.google.com/maps?q=NH-6,+Bombay+Road,+Chamrail,+Jaypur,+Howrah,+West+Bengal+711114&output=embed"
+        width="100%"
+        height="420"
+        style="border:0"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="JB Powercon location on Google Maps"
+      ></iframe>
+    </div>
+    <a class="reveal btn btn--primary" style="margin-top:var(--space-3)" href="{{site.GOOGLE_MAPS_URL}}" target="_blank" rel="noopener">Get Directions</a>
   </div>
 </section>
 </main>

@@ -1,9 +1,6 @@
 (function () {
   "use strict";
 
-  // ---- Preloader ----
-  // Runs on every page load (not gated by sessionStorage) since this is a
-  // traditional multi-page site — every navigation is a fresh load.
   var preloader = document.getElementById("preloader");
   if (preloader) {
     var hidePreloader = function () {
@@ -14,7 +11,6 @@
     };
     if (document.readyState === "complete") hidePreloader();
     else window.addEventListener("load", hidePreloader, { once: true });
-    // bfcache restore: page is already fully loaded, don't replay it
     window.addEventListener("pageshow", function (e) {
       if (e.persisted) {
         preloader.classList.add("is-hidden");
@@ -23,11 +19,6 @@
     });
   }
 
-  // ---- Section fade-in ----
-  // .hero is excluded in CSS (holds the LCP image). First-view sections
-  // (already in the viewport when the observer attaches) wait to animate
-  // until the preloader's own "done" signal, so they don't fade in
-  // underneath it; below-fold sections just reveal on scroll as normal.
   var fadeSections = document.querySelectorAll("main > section:not(.hero)");
   if (fadeSections.length && "IntersectionObserver" in window) {
     var pendingFirstView = [];
@@ -58,7 +49,6 @@
     else window.addEventListener("load", releaseFirstView, { once: true });
   }
 
-  // ---- Mobile nav dialog ----
   var nav = document.getElementById("mobile-nav");
   document.querySelectorAll("[data-menu-open]").forEach(function (btn) {
     btn.addEventListener("click", function () {
@@ -81,7 +71,6 @@
     });
   }
 
-  // ---- Privacy dialog (content fetched lazily, once) ----
   var privacyDialog = document.getElementById("privacy-dialog");
   var privacyBody = document.querySelector("[data-privacy-body]");
   var privacyLoaded = false;
@@ -115,14 +104,12 @@
     });
   }
 
-  // ---- aria-current on active nav link ----
   var path = location.pathname.replace(/index\.html$/, "");
   document.querySelectorAll(".main-nav__list a, .mobile-nav__list a").forEach(function (a) {
     var href = a.getAttribute("href");
     if (href === path) a.setAttribute("aria-current", "page");
   });
 
-  // ---- Scroll reveal ----
   var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var revealItems = document.querySelectorAll(".reveal");
   if (!prefersReduced && "IntersectionObserver" in window) {
@@ -151,7 +138,6 @@
     });
   }
 
-  // ---- Testimonials marquee pause/play ----
   document.querySelectorAll("[data-marquee]").forEach(function (marquee) {
     var toggle = marquee.querySelector("[data-marquee-toggle]");
     if (!toggle) return;
@@ -161,7 +147,6 @@
     });
   });
 
-  // ---- Portfolio filter + detail dialog ----
   var portfolioGrid = document.querySelector("[data-portfolio-grid]");
   if (portfolioGrid) {
     var portfolioCards = Array.prototype.slice.call(portfolioGrid.querySelectorAll("[data-portfolio-item]"));
@@ -215,12 +200,6 @@
     }
   }
 
-  // ---- Org chart popovers ----
-  // Hover/focus (mouse + keyboard) shows the card; a coarse pointer (touch)
-  // gets tap-to-toggle instead, since it has no hover. Esc and an outside
-  // tap close it. IDs are assigned here at runtime (the build's template
-  // engine has no per-node counter) so aria-describedby stays unique even
-  // through the recursive partial that repeats the same markup shape.
   var orgBoxes = document.querySelectorAll("[data-org-box]");
   if (orgBoxes.length) {
     var isCoarsePointer = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
@@ -235,17 +214,18 @@
     };
 
     var positionOrgPopover = function (box, pop) {
-      pop.classList.remove("org-popover--flip-up");
+      pop.classList.remove("org-popover--flip-left");
       var margin = 16;
       var boxRect = box.getBoundingClientRect();
       var popRect = pop.getBoundingClientRect();
-      var left = boxRect.left + boxRect.width / 2 - popRect.width / 2;
-      left = Math.max(margin, Math.min(left, window.innerWidth - popRect.width - margin));
-      var top = boxRect.bottom + 8;
-      if (top + popRect.height > window.innerHeight - margin) {
-        top = boxRect.top - popRect.height - 8;
-        pop.classList.add("org-popover--flip-up");
+      var top = boxRect.top + boxRect.height / 2 - popRect.height / 2;
+      top = Math.max(margin, Math.min(top, window.innerHeight - popRect.height - margin));
+      var left = boxRect.right + 8;
+      if (left + popRect.width > window.innerWidth - margin) {
+        left = boxRect.left - popRect.width - 8;
+        pop.classList.add("org-popover--flip-left");
       }
+      left = Math.max(margin, Math.min(left, window.innerWidth - popRect.width - margin));
       pop.style.left = left + "px";
       pop.style.top = top + "px";
     };
@@ -308,9 +288,6 @@
       true
     );
 
-    // Fixed-position popover coordinates are computed once on open; rather
-    // than re-track them through every scroll (page scroll, or the org
-    // chart's own horizontal scroll container), just close on any scroll.
     window.addEventListener(
       "scroll",
       function () {
@@ -320,7 +297,6 @@
     );
   }
 
-  // ---- WhatsApp enquiry form ----
   var waForm = document.getElementById("whatsapp-form");
   if (waForm) {
     waForm.addEventListener("submit", function (e) {
@@ -330,7 +306,7 @@
       var product = waForm.querySelector("#f-product");
       var quantity = waForm.querySelector("#f-quantity");
       var message = waForm.querySelector("#f-message");
-      var recipient = waForm.querySelector('input[name="recipient"]:checked');
+      var recipient = waForm.dataset.recipient;
       var status = waForm.querySelector("[data-form-status]");
       var hasError = false;
 
@@ -350,12 +326,6 @@
       status.dataset.state = "";
       status.textContent = "";
 
-      if (!recipient) {
-        hasError = true;
-        status.textContent = "Please choose who to send this to.";
-        status.dataset.state = "error";
-      }
-
       if (hasError) {
         if (!status.textContent) {
           status.textContent = "Please fix the highlighted fields.";
@@ -374,14 +344,13 @@
         "\nQuantity: " +
         quantity.value.trim() +
         (message.value.trim() ? "\nMessage: " + message.value.trim() : "");
-      var url = "https://wa.me/" + recipient.value + "?text=" + encodeURIComponent(text);
+      var url = "https://wa.me/" + recipient + "?text=" + encodeURIComponent(text);
       status.textContent = "Opening WhatsApp…";
       status.dataset.state = "success";
       window.open(url, "_blank", "noopener");
     });
   }
 
-  // ---- Credentials lightbox ----
   var credGrid = document.querySelector("[data-credentials-grid]");
   var credLightbox = document.getElementById("credential-lightbox");
   if (credGrid && credLightbox) {
@@ -428,6 +397,28 @@
     credLightbox.addEventListener("keydown", function (e) {
       if (e.key === "ArrowLeft") showCredential(credIndex - 1);
       if (e.key === "ArrowRight") showCredential(credIndex + 1);
+    });
+  }
+
+  var productLightbox = document.getElementById("product-lightbox");
+  if (productLightbox) {
+    var prodImage = productLightbox.querySelector("[data-lightbox-image]");
+    var prodTitle = productLightbox.querySelector("[data-lightbox-title]");
+    document.querySelectorAll("[data-product-zoom]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        prodImage.src = btn.dataset.zoomSrc || "";
+        prodImage.alt = btn.dataset.zoomTitle || "";
+        prodTitle.textContent = btn.dataset.zoomTitle || "";
+        if (typeof productLightbox.showModal === "function") productLightbox.showModal();
+      });
+    });
+    productLightbox.querySelectorAll("[data-lightbox-close]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        productLightbox.close();
+      });
+    });
+    productLightbox.addEventListener("click", function (e) {
+      if (e.target === productLightbox) productLightbox.close();
     });
   }
 })();

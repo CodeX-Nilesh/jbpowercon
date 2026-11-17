@@ -1,6 +1,4 @@
 {
-  "placeholder": false,
-  "_todo": "Transcribed from the brochure (pages 12-13, 'Machinery'). Kept as printed: the mixture machine's capacity is printed as '75 kg x1, 100 kg x2' against a quantity of 2; compressor capacity unit is printed as 'PSM' in the brochure, which is unusual (likely CFM or PSI) — confirm with client rather than silently correcting.",
   "items": [
     { "name": "Rod Break Down Machine", "make": "Tomer", "qty": 3, "capacity": "22 MT per day" },
     { "name": "Forward Wire Drawing-01", "make": "Tomer", "qty": 1, "capacity": "2 MT per day" },

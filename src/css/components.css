@@ -1,5 +1,3 @@
-/* ---------- Buttons ---------- */
-
 .btn {
   display: inline-flex;
   align-items: center;
@@ -18,11 +16,6 @@
     box-shadow var(--duration-fast) var(--ease-out);
 }
 
-/* Swipe-right fill: scaleX 0 -> 1 from the left. The fill color is always
-   var(--fg) and the hover text color always var(--bg) of the CURRENT
-   section — on a light section that's an ink fill with white text, on a
-   dark section it's a white fill with ink text, with no extra variables
-   or dark-mode variants needed. */
 .btn::before {
   content: "";
   position: absolute;
@@ -75,9 +68,6 @@ button.btn:active {
   color: var(--bg);
 }
 
-/* Theme-flipped like --outline (fg/bg swap), just filled instead of
-   bordered — on a dark section this becomes a white button instead of
-   silently blending into the graphite background behind it. */
 .btn--ink {
   background: var(--fg);
   color: var(--bg);
@@ -105,15 +95,11 @@ button.btn:active {
   color: var(--bg);
 }
 
-/* ---------- Hairline rule ---------- */
-
 .rule {
   border: 0;
   border-top: 1px solid var(--line);
   margin: 0;
 }
-
-/* ---------- Badges (ISO / certifications) ---------- */
 
 .badge-row {
   display: flex;
@@ -137,8 +123,6 @@ button.btn:active {
   color: var(--fg);
 }
 
-/* ---------- Cards ---------- */
-
 .card {
   background: var(--bg);
   border: 1px solid var(--line);
@@ -146,9 +130,6 @@ button.btn:active {
   padding: var(--space-4);
 }
 
-/* Quote/CTA band: always a light accent-tint card with ink text, even
-   when it lands inside a dark (even) section — it deliberately does NOT
-   use --bg/--fg, since its background never flips. */
 .cta-band {
   background: var(--accent-tint);
   border: 1px solid var(--accent);
@@ -172,11 +153,6 @@ button.btn:active {
     border-color var(--duration) var(--ease-out);
 }
 
-/* Product listing cards only (home "Products" + /products/) — always a
-   graphite-black card regardless of the section's own light/dark theme,
-   like .cta-band but inverted (always dark, not always light), so it
-   needs --text-on-ink explicitly, not --fg/--bg. The portfolio grid
-   reuses the base .product-card class and stays theme-adaptive. */
 .product-card--dark {
   border-color: var(--border-on-ink);
   background: var(--surface-ink);
@@ -193,13 +169,13 @@ button.product-card:focus-visible {
 .product-card__media {
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: color-mix(in srgb, var(--fg) 8%, var(--bg));
+  background: var(--surface);
 }
 
 .product-card__media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform var(--duration-slow) var(--ease-out);
 }
 
@@ -238,8 +214,6 @@ button.product-card:focus-visible {
 .product-card--dark .product-card__desc {
   color: var(--text-on-ink);
 }
-
-/* ---------- Portfolio filters ---------- */
 
 .portfolio-filters {
   display: flex;
@@ -280,8 +254,6 @@ button.product-card:focus-visible {
   display: none;
 }
 
-/* ---------- Stat tiles ---------- */
-
 .stat-row {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -309,11 +281,8 @@ button.product-card:focus-visible {
   color: var(--muted);
 }
 
-/* ---------- Hero ---------- */
-
 .hero {
-  /* Content-driven height, never forced to a viewport fraction — avoids
-     the min-height:100vh anti-pattern and any dead space it creates. */
+
   padding-block: var(--section-pad) var(--section-pad-tight);
 }
 
@@ -378,6 +347,42 @@ button.product-card:focus-visible {
   object-fit: cover;
 }
 
+.hero__media--product {
+  background: var(--surface);
+  position: relative;
+}
+
+.hero__media--product img {
+  object-fit: contain;
+}
+
+.zoom-trigger {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: zoom-in;
+}
+
+.zoom-hint {
+  position: absolute;
+  right: var(--space-2);
+  bottom: var(--space-2);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--ink) 70%, transparent);
+  color: #fff;
+  pointer-events: none;
+}
+
+.zoom-hint svg {
+  width: 20px;
+  height: 20px;
+}
+
 .feature-list {
   margin-top: var(--space-4);
   display: grid;
@@ -406,8 +411,6 @@ button.product-card:focus-visible {
 .feature-list li strong {
   color: var(--fg);
 }
-
-/* ---------- Page-intro entrance (runs once on load, not scroll-triggered) ---------- */
 
 @keyframes fade-in-up {
   from {
@@ -450,13 +453,6 @@ button.product-card:focus-visible {
   animation-delay: 300ms;
 }
 
-/* Deliberately NO entrance animation on .hero__media — it holds the LCP
-   image, and starting it at opacity:0 (or inside a faded wrapper) would
-   delay LCP. Only hero TEXT (.hero__eyebrow/__title/__lede/__actions,
-   above) animates in. */
-
-/* ---------- Scroll reveal ---------- */
-
 .reveal {
   opacity: 0;
   transform: translateY(16px);
@@ -476,12 +472,6 @@ button.product-card:focus-visible {
   }
 }
 
-/* ---------- Section fade-in ----------
-   Whole-section entrance (distinct from the per-card .reveal stagger
-   above). Gated behind html.js so no-JS visitors just see everything —
-   .hero is excluded on purpose: it holds the LCP image, and starting a
-   section at opacity:0 would delay LCP. Only hero TEXT animates (see the
-   page-intro entrance rules above); the image never does. */
 html.js main > section:not(.hero) {
   opacity: 0;
   transform: translateY(12px);
@@ -500,8 +490,6 @@ html.js main > section:not(.hero).in-view {
     transition: none;
   }
 }
-
-/* ---------- Spec table ---------- */
 
 .spec-table {
   width: 100%;
@@ -531,7 +519,6 @@ html.js main > section:not(.hero).in-view {
   font-weight: 700;
 }
 
-/* Mobile-first: stacked spec-cards by default, real table from 640px up */
 .spec-table,
 .spec-table thead {
   display: none;
@@ -574,8 +561,6 @@ html.js main > section:not(.hero).in-view {
   }
 }
 
-/* ---------- Org chart (pure HTML/CSS tree) ---------- */
-
 .org-chart,
 .org-chart ul {
   list-style: none;
@@ -583,8 +568,6 @@ html.js main > section:not(.hero).in-view {
   margin: 0;
 }
 
-/* Mobile-first: a simple indented tree. The connector-line horizontal
-   layout only kicks in at 720px+, where there's room for it. */
 .org-chart,
 .org-chart ul {
   display: block;
@@ -626,12 +609,6 @@ html.js main > section:not(.hero).in-view {
   font-size: var(--fs-caption);
 }
 
-/* ---------- Org chart: interactive box (hover/focus lift + popover) ---------- */
-
-/* The lift effect below deliberately animates `top` (not `transform`) —
-   a `transform` on this element would make it a new containing block for
-   its position:fixed popover child, breaking the popover's viewport-
-   relative positioning (see .org-popover). */
 [data-org-box] {
   position: relative;
   top: 0;
@@ -672,15 +649,6 @@ html.js main > section:not(.hero).in-view {
   outline-offset: 3px;
 }
 
-/* ---------- Org chart: hover/focus popover card ---------- */
-
-/* position: fixed (not absolute) is deliberate — .org-chart-wrap needs
-   overflow-x: auto to contain the tree's horizontal scroll (see task 2,
-   no page-level horizontal scroll), and once one overflow axis on an
-   ancestor is non-visible the UA computes the other axis as non-visible
-   too, which would clip an absolutely-positioned popover that pokes
-   above/below it. Fixed position escapes that clipping; JS computes its
-   left/top in viewport coordinates and keeps it off-screen-safe. */
 .org-popover {
   position: fixed;
   top: 0;
@@ -699,23 +667,23 @@ html.js main > section:not(.hero).in-view {
   visibility: hidden;
   pointer-events: none;
   z-index: 500;
-  transform: translateY(6px);
+  transform: translateX(6px);
   transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out), visibility 0s linear 200ms;
 }
 
 .org-popover.is-open {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateX(0);
   transition: opacity 200ms var(--ease-out), transform 200ms var(--ease-out);
 }
 
-.org-popover--flip-up {
-  transform: translateY(-6px);
+.org-popover--flip-left {
+  transform: translateX(-6px);
 }
 
-.org-popover--flip-up.is-open {
-  transform: translateY(0);
+.org-popover--flip-left.is-open {
+  transform: translateX(0);
 }
 
 .org-popover__img {
@@ -747,24 +715,18 @@ html.js main > section:not(.hero).in-view {
 @media (prefers-reduced-motion: reduce) {
   .org-popover,
   .org-popover.is-open,
-  .org-popover--flip-up,
-  .org-popover--flip-up.is-open {
+  .org-popover--flip-left,
+  .org-popover--flip-left.is-open {
     transition: opacity 1ms linear, visibility 0s linear;
     transform: none;
   }
 }
-
-/* ---------- Org chart: Directors tier + connector to General Manager ---------- */
 
 .org-chart-wrap {
   overflow-x: auto;
   padding-bottom: var(--space-2);
 }
 
-/* Mobile: directors stack flush-left, same as the GM/manager tree below
-   them (the mobile .org-chart li pattern is a left-indented list, not a
-   centered one) — so their connector sits at the same left edge instead
-   of drifting to a centered stem that wouldn't line up with the tree. */
 .org-directors {
   position: relative;
   display: flex;
@@ -820,8 +782,6 @@ html.js main > section:not(.hero).in-view {
     border-top: 1px solid var(--line);
   }
 
-  /* desktop's org-chart tree is centered (justify-content: center), so
-     the final stem down to the General Manager box re-centers here too */
   .org-directors::after {
     left: 50%;
   }
@@ -907,8 +867,6 @@ html.js main > section:not(.hero).in-view {
     height: var(--space-4);
   }
 }
-
-/* ---------- Testimonials marquee ---------- */
 
 .testimonial-card {
   height: 100%;
@@ -1028,8 +986,6 @@ html.js main > section:not(.hero).in-view {
   }
 }
 
-/* ---------- Forms ---------- */
-
 .field {
   display: flex;
   flex-direction: column;
@@ -1099,33 +1055,6 @@ fieldset {
   margin: 0 0 var(--space-3);
 }
 
-fieldset legend {
-  font-weight: 700;
-  padding: 0;
-  margin-bottom: var(--space-2);
-}
-
-.radio-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-
-.radio-option {
-  display: flex;
-  align-items: center;
-  gap: var(--space-1);
-  min-height: 44px;
-  padding: var(--space-1) var(--space-2);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-}
-
-.radio-option:has(input:checked) {
-  border-color: var(--accent);
-  background: var(--accent-tint);
-}
-
 .form-status {
   margin-top: var(--space-2);
   font-weight: 600;
@@ -1139,42 +1068,18 @@ fieldset legend {
   color: color-mix(in srgb, var(--fg) 80%, green);
 }
 
-/* ---------- Static map link ---------- */
-
-.map-link {
-  position: relative;
-  display: block;
+.map-embed {
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--line);
-}
-
-.map-link img {
-  width: 100%;
-  height: auto;
   aspect-ratio: 1200 / 420;
-  object-fit: cover;
-  transition: transform var(--duration-slow) var(--ease-out);
 }
 
-.map-link:hover img,
-.map-link:focus-visible img {
-  transform: scale(1.03);
+.map-embed iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
-
-.map-link__badge {
-  position: absolute;
-  right: var(--space-3);
-  bottom: var(--space-3);
-  background: var(--ink);
-  color: var(--text-on-ink);
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius);
-  font-weight: 700;
-  font-size: 0.9375rem;
-}
-
-/* ---------- Breadcrumb ---------- */
 
 .breadcrumb {
   display: flex;
@@ -1203,8 +1108,6 @@ fieldset legend {
   gap: var(--space-1);
   flex-wrap: wrap;
 }
-
-/* ---------- Privacy / mobile-nav dialog shared ---------- */
 
 dialog {
   color: var(--text);
@@ -1245,8 +1148,6 @@ dialog {
 .dialog-surface__close:hover {
   background: var(--surface-alt);
 }
-
-/* ---------- Credentials grid ---------- */
 
 .credential-card {
   display: block;
@@ -1304,8 +1205,6 @@ dialog {
   font-size: 0.9375rem;
 }
 
-/* ---------- Lightbox (certificate viewer) ---------- */
-
 .lightbox {
   width: min(900px, 94vw);
   max-height: 92vh;
@@ -1337,8 +1236,7 @@ dialog {
   height: auto;
   object-fit: contain;
   border-radius: var(--radius);
-  /* Soft deterrent only — browser devtools can still get at the image,
-     but this removes the obvious "right-click / drag to save" paths. */
+
   user-select: none;
   -webkit-user-drag: none;
 }
@@ -1431,6 +1329,3 @@ dialog {
     right: var(--space-1);
   }
 }
-
-/* Preloader now lives in its own render-blocking /css/preloader.css —
-   see that file and partials/preloader.html. */

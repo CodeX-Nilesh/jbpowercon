@@ -1,20 +1,16 @@
 {
-  "placeholder": false,
-  "_todo": "Director names and bios are transcribed from the brochure (pages 5-7); their org-chart hover-card descriptions are condensed from those same bios. The org chart's tier titles and reporting structure (Directors -> General Manager -> Production/Quality/Marketing Manager + Chartered Accountant -> Incharges/Executives -> Shift Supervisors/Accounts Executive) follow the client's written revision. Individual role-holder names below General Manager are still TODO pending client input, and every role-holder description below the Directors is a generic placeholder (orgChart.*.placeholder: true) pending real bios — swap in real copy before launch.",
   "leadership": [
     {
       "name": "Mr. Adesh Jain",
       "title": "Director (Production & Purchase)",
       "bio": "With over three decades of experience in the industrial and trading sectors, Mr. Adesh Jain began his professional journey at the age of 18, before completing his graduation from Kolkata University. Rising through the ranks, he progressed from a regular staff role to Director of his own company, gaining in-depth operational and strategic expertise. After retiring from that role at 45, he turned to entrepreneurship, trading ferrous and non-ferrous metals for over five years — hands-on experience in procurement, logistics and market dynamics that laid the foundation for what followed. He has managed complete iron and steel factory setups from land acquisition through to day-to-day operations, and now brings that experience to cable and conductor manufacturing, serving India's growing infrastructure and energy sectors.",
-      "photo": "/images/team/adesh-jain.svg",
-      "placeholderPhoto": true
+      "photo": "/images/team/adesh-jain.svg"
     },
     {
       "name": "Mr. Sumeet Kr Bansal",
       "title": "Director (Finance & Banking)",
       "bio": "With over 25 years of entrepreneurial experience, Mr. Sumeet Kr Bansal built a strong foundation in trading before moving into manufacturing. After graduating in 1996, he joined his family business, developing a deep understanding of sales, procurement and human resource management. His career has been marked by resilience, adaptability and a hands-on approach to leadership — forging supplier relationships, managing teams and steering through market volatility. He now brings that trading expertise to a renewed focus on manufacturing, building a forward-looking, quality-driven enterprise.",
-      "photo": "/images/team/sumeet-bansal.svg",
-      "placeholderPhoto": true
+      "photo": "/images/team/sumeet-bansal.svg"
     }
   ],
   "orgChart": {
@@ -23,81 +19,69 @@
         "name": "Mr. Adesh Jain",
         "title": "Director",
         "description": "Three decades in industrial and trading sectors, including running complete iron and steel factory setups, now applied to cable and conductor manufacturing.",
-        "image": "/images/team/org-avatar-placeholder.svg",
-        "placeholder": false
+        "image": "/images/team/org-avatar-placeholder.svg"
       },
       {
         "name": "Mr. Sumeet Kr Bansal",
         "title": "Director",
         "description": "25 years of entrepreneurial experience in trading and manufacturing, with a background in sales, procurement and human resource management.",
-        "image": "/images/team/org-avatar-placeholder.svg",
-        "placeholder": false
+        "image": "/images/team/org-avatar-placeholder.svg"
       }
     ],
+    "ceo": {
+      "title": "CEO",
+      "name": "Mrs. Jeeni Jain",
+      "description": "Leads overall company strategy and operations, working with the Directors and General Manager to steer JB Powercon's manufacturing and growth plans.",
+      "image": "/images/team/org-avatar-placeholder.svg"
+    },
     "generalManager": {
       "title": "General Manager",
-      "name": "TODO",
-      "description": "Oversees day-to-day plant operations, coordinating the production, quality, marketing and finance functions on behalf of the Directors.",
-      "image": "/images/team/org-avatar-placeholder.svg",
-      "placeholder": true
+      "name": "Mr. Yash Jain",
+      "description": "Oversees day-to-day plant operations, coordinating the production, quality, development, marketing and accounts functions on behalf of the CEO and Directors.",
+      "image": "/images/team/org-avatar-placeholder.svg"
     },
     "children": [
       {
         "title": "Production Manager",
-        "name": "TODO",
+        "name": "Basudev Das",
         "description": "Plans and supervises the manufacturing floor, scheduling production runs and overseeing output and throughput.",
-        "image": "/images/team/org-avatar-placeholder.svg",
-        "placeholder": true,
-        "children": [
-          {
-            "title": "Production Incharge",
-            "name": "TODO",
-            "description": "Manages shift operations on the production floor, keeping machinery, manpower and materials running to schedule.",
-            "image": "/images/team/org-avatar-placeholder.svg",
-            "placeholder": true,
-            "children": [
-              { "title": "Shift Supervisor", "name": "TODO", "description": "Supervises a single production shift, overseeing line staff and reporting progress to the Production Incharge.", "image": "/images/team/org-avatar-placeholder.svg", "placeholder": true },
-              { "title": "Shift Supervisor", "name": "TODO", "description": "Supervises a single production shift, overseeing line staff and reporting progress to the Production Incharge.", "image": "/images/team/org-avatar-placeholder.svg", "placeholder": true }
-            ]
-          }
-        ]
+        "image": "/images/team/org-avatar-placeholder.svg"
       },
       {
         "title": "Quality Manager",
-        "name": "TODO",
+        "name": "Arnab Chakraborty",
         "description": "Owns quality assurance across incoming materials, in-process checks and finished-goods testing against ISO standards.",
-        "image": "/images/team/org-avatar-placeholder.svg",
-        "placeholder": true,
-        "children": [
-          { "title": "Quality Incharge", "name": "TODO", "description": "Runs day-to-day quality inspections and testing on the production floor, reporting to the Quality Manager.", "image": "/images/team/org-avatar-placeholder.svg", "placeholder": true }
-        ]
+        "image": "/images/team/org-avatar-placeholder.svg"
+      },
+      {
+        "title": "Development Manager",
+        "name": "MD Firoz Ansari",
+        "description": "Leads product and process development, working on cable and conductor specifications and manufacturing improvements.",
+        "image": "/images/team/org-avatar-placeholder.svg"
       },
       {
         "title": "Marketing Manager",
-        "name": "TODO",
+        "name": "Manojit Maity",
         "description": "Leads sales and customer relationships, coordinating quotes, dispatches and new business development.",
-        "image": "/images/team/org-avatar-placeholder.svg",
-        "placeholder": true,
-        "children": [
-          { "title": "Market Executive", "name": "TODO", "description": "Handles client enquiries and field sales activity, reporting to the Marketing Manager.", "image": "/images/team/org-avatar-placeholder.svg", "placeholder": true }
-        ]
+        "image": "/images/team/org-avatar-placeholder.svg"
       },
       {
-        "title": "Chartered Accountant",
-        "name": "TODO",
+        "title": "Accounts",
+        "name": "Sumit Gupta",
         "description": "Oversees finance, statutory compliance and accounts for the company, reporting on financial performance to the Directors.",
         "image": "/images/team/org-avatar-placeholder.svg",
-        "placeholder": true,
         "children": [
           {
-            "title": "Accounts Manager",
-            "name": "TODO",
-            "description": "Manages day-to-day accounting operations, book-keeping and vendor and customer ledgers.",
-            "image": "/images/team/org-avatar-placeholder.svg",
-            "placeholder": true,
-            "children": [
-              { "title": "Accounts Executive", "name": "TODO", "description": "Handles routine accounting entries, invoicing and reconciliation, reporting to the Accounts Manager.", "image": "/images/team/org-avatar-placeholder.svg", "placeholder": true }
-            ]
+            "title": "Executive",
+            "name": "Shahnawaz Ansari",
+            "description": "Handles routine accounting entries, invoicing and reconciliation, reporting to Accounts.",
+            "image": "/images/team/org-avatar-placeholder.svg"
+          },
+          {
+            "title": "Executive",
+            "name": "Sujit Saha",
+            "description": "Handles routine accounting entries, invoicing and reconciliation, reporting to Accounts.",
+            "image": "/images/team/org-avatar-placeholder.svg"
           }
         ]
       }

@@ -11,9 +11,6 @@
   gap: var(--space-3);
 }
 
-/* Mobile-first column utilities: full width below 640px (card grids go
-   2-up at 640px, text/media pairs stay full width until 1024px so they
-   don't cramp on tablet), intended desktop span at 1024px+. */
 .col-3,
 .col-4,
 .col-5,
@@ -55,12 +52,6 @@
   padding-block: var(--section-pad-tight);
 }
 
-/* ---------- Alternating section theme ----------
-   Every even top-level <section> (hero = 1st, so 2nd/4th/6th… alternate)
-   flips to the graphite palette; every odd one (hero included) paints
-   beige. Components read --bg/--fg/--muted/--line instead of the raw
-   tokens, so cards, tables, forms, buttons, the org chart and accordions
-   all adapt without per-component rules for either case. */
 main > section:nth-of-type(even) {
   --bg: var(--ink);
   --fg: var(--text-on-ink);
@@ -72,11 +63,7 @@ main > section:nth-of-type(even) {
 }
 
 main > section:nth-of-type(odd) {
-  /* The section itself paints the plain beige; --bg is deliberately the
-     *deeper* tint so children (.card, table, input, .org-node, …) read
-     as distinct from the section backdrop via both a hairline border and
-     a visible tint, not white, matching the graphite side's "card border
-     only" look with a beige-appropriate adjustment. */
+
   --bg: var(--beige-deep);
   --fg: var(--text);
   --muted: var(--text-muted);
@@ -85,8 +72,6 @@ main > section:nth-of-type(odd) {
   color: var(--fg);
 }
 
-/* Light-only assets (certificates, logos) inside a dark section sit on a
-   stone card so they never float as an unexplained white rectangle. */
 .light-only-card {
   background: var(--stone-light);
   border-radius: var(--radius-lg);
@@ -107,10 +92,6 @@ main > section:nth-of-type(odd) {
   font-size: var(--fs-h3);
   margin-right: var(--space-2);
 }
-
-/* ---------- Site header ---------- */
-/* Always graphite, regardless of what section theme sits beneath it —
-   this is a local override, not part of the <main> alternation. */
 
 .site-header {
   --bg: var(--ink);
@@ -133,14 +114,6 @@ main > section:nth-of-type(odd) {
   padding-block: var(--space-2);
   gap: var(--space-3);
 }
-
-/* ---------- Logo ----------
-   One unaltered raster logo (see tools/logo.py) — the artwork already
-   carries "JB POWERCON WIRES & CABLES" and the tagline, so this is never
-   paired with separate live-text. On a graphite/ink-deep background the
-   navy lettering has no contrast, so it sits on a small beige plate; on
-   a light background (e.g. the white mobile-nav dialog) it can sit
-   directly — see markup in header.html/footer.html. */
 
 .logo-link {
   display: inline-flex;
@@ -199,9 +172,6 @@ main > section:nth-of-type(odd) {
     color: var(--accent-safe);
   }
 
-  /* Draws in left-to-right on hover (origin left); on leave, the origin
-     flips to right so it exits the same direction it came from instead of
-     retracting backward. Current page keeps the bar fully drawn. */
   .main-nav__list a::after {
     content: "";
     position: absolute;
@@ -297,7 +267,6 @@ main > section:nth-of-type(odd) {
   top: 12px;
 }
 
-/* mobile nav dialog */
 .mobile-nav {
   padding: 0;
   border: 0;
@@ -352,7 +321,6 @@ main > section:nth-of-type(odd) {
   border-bottom: 1px solid var(--border-hairline);
 }
 
-/* sticky mobile call/whatsapp bar */
 .mobile-cta-bar {
   display: none;
 }
@@ -394,10 +362,6 @@ main > section:nth-of-type(odd) {
     padding-bottom: 56px;
   }
 }
-
-/* ---------- Site footer ---------- */
-/* Always ink-deep, with a 1px orange top rule so it never visually merges
-   into a graphite <main> section sitting directly above it. */
 
 .site-footer {
   --bg: var(--ink-deep);
@@ -468,8 +432,6 @@ main > section:nth-of-type(odd) {
   gap: var(--space-1);
 }
 
-/* Footer nav links get the identical draw-in / exit-right underline as
-   the header nav. */
 .site-footer__list--nav li a {
   position: relative;
   display: inline-flex;

@@ -1,6 +1,4 @@
 {
-  "placeholder": false,
-  "_todo": "Transcribed from the brochure (pages 14-15, 'Testing Equipment's'). Kept as printed: items 16 and 17 are absent from the brochure's own numbering (it jumps from 15 to 18) — the gap is intentional, not a transcription error.",
   "items": [
     { "no": 1, "name": "4 Cell Ageing Oven", "make": "Goldstar", "range": "0 to 400°C, L/C 0.1°C", "calibrated": true },
     { "no": 2, "name": "Hot Air Oven", "make": "Goldstar", "range": "0 to 300°C, L/C 0.1°C", "calibrated": true },

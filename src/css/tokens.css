@@ -1,12 +1,11 @@
 :root {
-  /* Brand colors — the only three hues in this system. Every other color
-     below is mixed from these three; never add a new hex value elsewhere. */
+
   --ink: #24282B;
-  --ink-deep: #1B1E20; /* footer only */
+  --ink-deep: #1B1E20;
   --stone: #DBD7D4;
   --accent: #FD5E00;
-  --beige: #F5F5DC; /* odd-section background, replacing white/off-white */
-  --beige-deep: color-mix(in srgb, var(--beige) 90%, var(--ink)); /* cards/tables/inputs inside beige sections */
+  --beige: #F5F5DC;
+  --beige-deep: color-mix(in srgb, var(--beige) 90%, var(--ink));
 
   --ink-10: color-mix(in srgb, var(--ink) 10%, white);
   --ink-70: color-mix(in srgb, var(--ink) 70%, white);
@@ -16,13 +15,7 @@
   --accent-dark: color-mix(in srgb, var(--accent) 82%, var(--ink));
   --accent-tint: color-mix(in srgb, var(--accent) 10%, white);
   --accent-tint-strong: color-mix(in srgb, var(--accent) 22%, white);
-  /* Plain --accent fails AA (~3.1:1) as small/normal text on white, beige
-     or stone, but passes (~4.8:1) on graphite. --accent-safe is the one
-     to use for small accent-colored text/labels: a 65/35 accent/ink mix
-     that clears 4.5:1 on both white (5.4:1) and beige (4.9:1), overridden
-     back to plain --accent on dark sections where it already passes.
-     Large bold text (24px+, e.g. stat numbers, section numerals) can use
-     plain --accent directly. */
+
   --accent-safe: color-mix(in srgb, var(--accent) 65%, var(--ink) 35%);
 
   --surface: #ffffff;
@@ -33,22 +26,15 @@
 
   --text: var(--ink);
   --text-muted: var(--ink-70);
-  --text-on-accent: var(--ink); /* never white on orange */
+  --text-on-accent: var(--ink);
   --text-on-ink: #ffffff;
   --text-on-ink-muted: color-mix(in srgb, white 70%, var(--ink));
 
-  /* Section theme (overridden per odd/even <main> section — see
-     layout.css). Every themeable component reads --bg/--fg/--muted/--line
-     instead of the raw tokens above, so it adapts automatically. Root
-     default is beige (the page's base tone now, not white) so any gap
-     outside a themed section — e.g. the breadcrumb strip before the
-     first section — still reads as beige, not a white seam. */
   --bg: var(--beige);
   --fg: var(--text);
   --muted: var(--text-muted);
   --line: var(--border-hairline);
 
-  /* Type: Space Grotesk (display, 600/700) + Inter (body, 400/500) */
   --font-display: "Space Grotesk", "Space Grotesk Fallback", system-ui, sans-serif;
   --font-body: "Inter", "Inter Fallback", system-ui, sans-serif;
 
@@ -66,8 +52,6 @@
   --tracking-tight: -0.01em;
   --tracking-label: 0.08em;
 
-  /* Mobile-first 8px spacing scale (96/128 dropped — nothing needs to be
-     that big at the section-padding scale we use now) */
   --space-1: 8px;
   --space-2: 16px;
   --space-3: 24px;

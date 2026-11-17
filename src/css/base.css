@@ -7,9 +7,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
-  /* Safety net only — the real fix is every full-bleed section owning its
-     own background with content in an inner .container (see layout.css);
-     this just catches anything that still manages to overflow. */
+
   overflow-x: clip;
 }
 
@@ -117,7 +115,6 @@ p {
   color: var(--muted);
 }
 
-/* Focus visibility — 2px orange outline, 3px offset, everywhere */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;

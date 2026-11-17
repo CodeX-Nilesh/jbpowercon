@@ -6,7 +6,6 @@
   "GSTIN": "19AAGCJ3269B1ZL",
   "ISO_9001": "ISO 9001:2015",
   "ISO_14001": "ISO 14001:2015",
-  "UDYAM_NUMBER": "TODO: verify — company-details text and certificate image disagree",
   "ADDRESS": {
     "line1": "NH-6, Bombay Road",
     "line2": "Chamrail, Jaypur",
@@ -16,13 +15,11 @@
     "country": "India"
   },
   "CONTACTS": [
-    { "name": "Mr. Adesh Jain", "role": "Director", "phone": "9836369070", "whatsapp": "919836369070" },
-    { "name": "Mr. Sumeet Kr Bansal", "role": "Director", "phone": "9007283957", "whatsapp": "919007283957" }
+    { "name": "Mr. Yash Jain", "role": "General Manager", "phone": "6264400688", "whatsapp": "916264400688" }
   ],
   "EMAIL": "jbpowercon@gmail.com",
   "GOOGLE_MAPS_URL": "https://www.google.com/maps/search/?api=1&query=NH-6%2C+Bombay+Road%2C+Chamrail%2C+Jaypur%2C+Howrah%2C+West+Bengal+711114",
   "SOCIAL": {
-    "_todo": "Placeholder platform root URLs only — nobody has confirmed JB Powercon profiles exist at these. Replace with the real profile URLs before launch. Do NOT add these to Organization JSON-LD sameAs until they're confirmed real (see jsonld-org.html, which currently omits sameAs entirely).",
     "facebook": "https://facebook.com",
     "instagram": "https://instagram.com",
     "youtube": "https://youtube.com"
