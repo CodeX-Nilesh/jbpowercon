@@ -142,30 +142,6 @@
       {{/if}}
       {{/each}}
     </div>
-    <div class="spec-table-wrap reveal">
-      <table class="spec-table">
-        <caption class="visually-hidden">Test equipment at JB Powercon</caption>
-        <thead>
-          <tr><th>No.</th><th>Equipment</th><th>Make</th><th>Range</th></tr>
-        </thead>
-        <tbody>
-          {{#each data.tests.items}}
-          <tr><td>{{no}}</td><td>{{name}}</td><td>{{make}}</td><td>{{range}}</td></tr>
-          {{/each}}
-        </tbody>
-      </table>
-      <div class="spec-cards">
-        {{#each data.tests.items}}
-        <div class="card">
-          <h3 style="font-size:1.0625rem;font-family:var(--font-body);font-weight:700">{{no}}. {{name}}</h3>
-          <dl>
-            <dt>Make</dt><dd>{{make}}</dd>
-            <dt>Range</dt><dd>{{range}}</dd>
-          </dl>
-        </div>
-        {{/each}}
-      </div>
-    </div>
     <p class="label" style="margin-top:var(--space-2)">All instruments above carry valid calibration.</p>
   </div>
 </section>
