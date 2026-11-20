@@ -1205,6 +1205,67 @@ dialog {
   font-size: 0.9375rem;
 }
 
+/* ---------- Lab equipment cards (Services page) ---------- */
+
+.test-card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg);
+  cursor: zoom-in;
+  font-family: inherit;
+  transition: transform var(--duration) var(--ease-out), box-shadow var(--duration) var(--ease-out),
+    border-color var(--duration) var(--ease-out);
+}
+
+.test-card:hover,
+.test-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.test-card__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.test-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.test-card:hover .test-card__media img,
+.test-card:focus-visible .test-card__media img {
+  transform: scale(1.06);
+}
+
+.test-card__body {
+  display: block;
+  padding: var(--space-2) var(--space-3) var(--space-3);
+}
+
+.test-card__title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--fg);
+}
+
+.test-card__desc {
+  display: block;
+  margin-top: var(--space-1);
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
 .lightbox {
   width: min(900px, 94vw);
   max-height: 92vh;

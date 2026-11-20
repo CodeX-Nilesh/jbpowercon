@@ -421,4 +421,26 @@
       if (e.target === productLightbox) productLightbox.close();
     });
   }
+
+  var testLightbox = document.getElementById("test-lightbox");
+  if (testLightbox) {
+    var testImage = testLightbox.querySelector("[data-lightbox-image]");
+    var testTitle = testLightbox.querySelector("[data-lightbox-title]");
+    document.querySelectorAll("[data-test-zoom]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        testImage.src = btn.dataset.zoomSrc || "";
+        testImage.alt = btn.dataset.zoomTitle || "";
+        testTitle.textContent = btn.dataset.zoomTitle || "";
+        if (typeof testLightbox.showModal === "function") testLightbox.showModal();
+      });
+    });
+    testLightbox.querySelectorAll("[data-lightbox-close]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        testLightbox.close();
+      });
+    });
+    testLightbox.addEventListener("click", function (e) {
+      if (e.target === testLightbox) testLightbox.close();
+    });
+  }
 })();

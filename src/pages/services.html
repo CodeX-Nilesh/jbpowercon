@@ -126,6 +126,22 @@
     <div class="section-head">
       <h2 class="reveal"><span class="section-number">03</span>Quality testing</h2>
     </div>
+    <div class="grid-12 reveal" style="margin-bottom:var(--space-4)">
+      {{#each data.tests.items}}
+      {{#if image}}
+      <button type="button" class="test-card col-4" data-test-zoom data-zoom-src="{{image}}" data-zoom-title="{{name}}">
+        <span class="test-card__media">
+          <img src="{{image}}" alt="{{name}}" width="800" height="600" loading="lazy" />
+          <span class="zoom-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+        </span>
+        <span class="test-card__body">
+          <span class="test-card__title">{{name}}</span>
+          <span class="test-card__desc">{{make}}</span>
+        </span>
+      </button>
+      {{/if}}
+      {{/each}}
+    </div>
     <div class="spec-table-wrap reveal">
       <table class="spec-table">
         <caption class="visually-hidden">Test equipment at JB Powercon</caption>
@@ -163,6 +179,19 @@
   </div>
 </section>
 </main>
+
+<dialog id="test-lightbox" class="lightbox" aria-label="Lab equipment viewer">
+  <button type="button" class="lightbox__close" data-lightbox-close>
+    <span class="visually-hidden">Close</span>
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="lightbox__frame">
+    <img data-lightbox-image src="" alt="" oncontextmenu="return false" draggable="false" />
+  </div>
+  <div class="lightbox__caption">
+    <p class="lightbox__title" data-lightbox-title></p>
+  </div>
+</dialog>
 
 {{> partials/footer.html}}
 
